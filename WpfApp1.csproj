@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="back.jpg" />
+    <None Remove="exit.jpg" />
     <None Remove="sign in.png" />
   </ItemGroup>
 
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <Resource Include="back.jpg" />
+    <Resource Include="exit.jpg" />
     <Resource Include="sign in.png" />
   </ItemGroup>
 
