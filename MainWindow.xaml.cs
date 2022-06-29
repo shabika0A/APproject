@@ -34,7 +34,9 @@ namespace WpfApp1
 
         private void sign_in_Click(object sender, RoutedEventArgs e)
         {
-
+            sign_in firstSignIn = new sign_in();
+            this.Close();
+            firstSignIn.Show();
         }
 
         private void sign_up_Click(object sender, RoutedEventArgs e)

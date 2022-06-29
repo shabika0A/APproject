@@ -10,11 +10,14 @@
     <Window.Background>
         <ImageBrush>
             <ImageBrush.ImageSource>
-                <BitmapImage UriSource="D:\uni\ap\project =)\WpfApp1\sign in.png"/>
+                <ImageSource>/sign in.png</ImageSource>
             </ImageBrush.ImageSource>
         </ImageBrush>
     </Window.Background>
     <Grid x:Name="welcomeGrid">
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition  Height="281*"></RowDefinition>
             <RowDefinition Height="37*"/>
@@ -25,9 +28,9 @@
 
             </RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Name="TextBlock1" Height="50" Width="164"      Text="Welcome"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Center" Foreground="#FF00192E" FontSize="40" FontWeight="Bold" FontFamily="Cambria"/>
+        <TextBlock Name="TextBlock1" Height="50" Width="172"      Text="Welcome"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Center" Foreground="#FF00192E" FontSize="40" FontWeight="Bold" FontFamily="Cambria"/>
         <Button x:Name="sign_in_Button" Grid.Row="1" Content="sign in" Margin="146,7,142,0" VerticalAlignment="Top" Height="46" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Grid.RowSpan="2" Click="sign_in_Click" />
-        <Button x:Name="sign_up_main" Grid.Row="3" Content="sign upp" Margin="146,0,142,0" VerticalAlignment="Center" Height="46" Background="#FF58EECB" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="sign_up_Click"/>
+        <Button x:Name="sign_up_main" Grid.Row="3" Content="sign up" Margin="146,0,142,0" VerticalAlignment="Center" Height="46" Background="#FF58EECB" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="sign_up_Click"/>
         <Button x:Name="Preview_Books" Grid.Row="4" Content="Preview Books" Margin="146,10,142,0" VerticalAlignment="Top" Height="46" Background="#FF8CD6C6" FontSize="18" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e"/>
         <Button x:Name="exit" Grid.Row="4" Content="exit" Margin="206,97,206,0" VerticalAlignment="Top" Height="29" Background="#FF1CB291" FontSize="18" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ffc857" Grid.RowSpan="2" Click="exit_Click"/>
     </Grid>

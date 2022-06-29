@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="back.jpg" />
+    <None Remove="sign in.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="back.jpg" />
+    <Resource Include="sign in.png" />
   </ItemGroup>
 
 </Project>

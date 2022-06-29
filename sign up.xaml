@@ -7,8 +7,17 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="" Height="600" Width="1066">
-    
+    <Window.Background>
+        <ImageBrush ImageSource="/back.jpg"/>
+    </Window.Background>
+
     <Grid>
+        <Grid.OpacityMask>
+            <ImageBrush ImageSource="/sign in.png"/>
+        </Grid.OpacityMask>
+        <Grid.Background>
+            <ImageBrush ImageSource="/back.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition  Height="150"></RowDefinition>
             <RowDefinition Height="40"/>
@@ -22,7 +31,7 @@
         </Grid.RowDefinitions>
         <TextBlock Name="TextBlock1" Height="50" Width="164"      Text="Sign Up"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="40" FontWeight="Bold" FontFamily="Cambria" Margin="476,0,0,0"/>
         <Button x:Name="sign_up_in_page" Grid.Row="7" Content="sign up" Margin="390,43,390,0" VerticalAlignment="Top" Height="48" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e"/>
-        <Button x:Name="back" Grid.Row="8" Content="back" Margin="920,20,30,0" VerticalAlignment="Top" Height="46" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Grid.RowSpan="2"/>
+        <Button x:Name="back" Grid.Row="8" Content="back" Margin="920,20,30,0" VerticalAlignment="Top" Height="46" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Grid.RowSpan="2" Click="back_Click"/>
         <TextBox x:Name="name" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="FirstName" Foreground="#ff00192e" Grid.Row="1"/>
         <TextBox x:Name="lastName" Margin="374,4,374,10" Opacity="0.69" materialDesign:HintAssist.Hint="LastName" Foreground="#ff00192e" Grid.Row="2"/>
         <TextBox x:Name="phoneNumber" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="PhoneNumber" Foreground="#ff00192e" Grid.Row="3"/>

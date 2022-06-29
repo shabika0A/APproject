@@ -22,7 +22,9 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void back_Click(object sender, RoutedEventArgs e)
+        
+
+        private void back_Click_1(object sender, RoutedEventArgs e)
         {
             MainWindow m = new MainWindow();
             m.Show();
