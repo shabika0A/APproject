@@ -39,9 +39,9 @@ namespace WpfApp1
 
         private void sign_up_Click(object sender, RoutedEventArgs e)
         {
-            sign_up SignUp = new sign_up();
-            SignUp.Show();
+            sign_up firstSignUp = new sign_up();
             this.Close();
+            firstSignUp.Show();
         }
     }
 }

@@ -20,12 +20,6 @@ namespace WpfApp1
         public sign_up()
         {
             InitializeComponent();
-            this.Show();
-        }
-
-        private void sign_in_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
