@@ -49,5 +49,12 @@ namespace WpfApp1
             this.Close();
             firstSignUp.Show();
         }
+
+        private void Preview_Books_Click(object sender, RoutedEventArgs e)
+        {
+            Preview_books PreviewBooks = new Preview_books();
+            this.Close();
+            PreviewBooks.Show();
+        }
     }
 }
