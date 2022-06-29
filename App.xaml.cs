@@ -22,10 +22,10 @@ namespace WpfApp1
     }
     class user
     {
-
+        public bool IsManager { get; set; }
     }
     class manager
     {
-
+        
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace WpfApp1
 {
@@ -30,6 +31,9 @@ namespace WpfApp1
             Window1 exit = new Window1();
             this.Close();
             exit.Show();
+            //Thread.Sleep(3000);
+            //Task.Delay(1000);
+            //exit.Close();
         }
 
         private void sign_in_Click(object sender, RoutedEventArgs e)

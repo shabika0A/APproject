@@ -38,7 +38,8 @@
         <TextBox x:Name="Email" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="Email" Foreground="#ff00192e" Grid.Row="4"/>
         <TextBox x:Name="password" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="Password" Foreground="#ff00192e" Grid.Row="5"/>
         <TextBox x:Name="ConfirmPassword" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="ConfirmPassword" Foreground="#ff00192e" Grid.Row="6"/>
-
+        <ToggleButton x:Name="IsManager" Margin="233,10,515,38" Opacity="0.69"  Grid.Row="6" Grid.RowSpan="2" Checked="IsManager_Checked" />
+        <TextBlock Name="ToggleMassage" Height="15" Width="65"  Text="I am manager."  VerticalAlignment="Top"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="10"   Margin="408,4,0,0" Grid.Row="7"/>
     </Grid>
 
 </Window>

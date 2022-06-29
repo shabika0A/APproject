@@ -24,6 +24,7 @@
         <Button x:Name="back" Grid.Row="4" Content="back" Margin="914,40,36,8" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="back_Click_1" />
         <TextBox x:Name="phoneNumber" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="PhoneNumber" Foreground="#ff00192e" Grid.Row="1"/>
         <TextBox x:Name="password" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="Password" Foreground="#ff00192e" Grid.Row="2"/>
-
+        <ToggleButton x:Name="IsManager" Margin="215,36,533,172" Opacity="0.69"  Grid.Row="2" Grid.RowSpan="2" Checked="IsManager_Checked" />
+        <TextBlock Name="ToggleMassage" Height="15" Width="65"  Text="I am manager."  VerticalAlignment="Top"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="10"   Margin="390,5,0,0" Grid.Row="3"/>
     </Grid>
 </Window>

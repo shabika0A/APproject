@@ -29,6 +29,10 @@ namespace WpfApp1
             this.Close();
         }
 
-        
+        private void IsManager_Checked(object sender, RoutedEventArgs e)
+        {
+            user NewUser = new user();
+            NewUser.IsManager = true;
+        }
     }
 }
