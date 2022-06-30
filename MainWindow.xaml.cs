@@ -13,11 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
-<<<<<<< HEAD
 using System.Windows.Threading;
 using System.Collections.ObjectModel;
-=======
->>>>>>> 5e7b12f8c1d4c7e19535eb576bdda5e8d63a371d
 
 namespace WpfApp1
 {
@@ -38,14 +35,8 @@ namespace WpfApp1
             Window1 exit = new Window1();
             this.Close();
             exit.Show();
-<<<<<<< HEAD
             
             
-=======
-            //Thread.Sleep(3000);
-            //Task.Delay(1000);
-            //exit.Close();
->>>>>>> 5e7b12f8c1d4c7e19535eb576bdda5e8d63a371d
         }
 
         private void sign_in_Click(object sender, RoutedEventArgs e)
