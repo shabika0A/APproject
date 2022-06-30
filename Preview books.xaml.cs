@@ -14,29 +14,20 @@ using System.Collections.ObjectModel;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for sign_in.xaml
+    /// Interaction logic for Preview_books.xaml
     /// </summary>
-    public partial class sign_in : Window
+    public partial class Preview_books : Window
     {
-        public sign_in()
+        public Preview_books()
         {
             InitializeComponent();
         }
 
-        
-
-        private void back_Click_1(object sender, RoutedEventArgs e)
+        private void back_Click(object sender, RoutedEventArgs e)
         {
             MainWindow m = new MainWindow();
             m.Show();
             this.Close();
-        }
-
-        private void IsManager_Checked(object sender, RoutedEventArgs e)
-        {
-            //user NewUser = new user();
-            //NewUser.IsManager = true;
-            
         }
     }
 }

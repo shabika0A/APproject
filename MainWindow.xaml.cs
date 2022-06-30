@@ -12,12 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
+using System.Windows.Threading;
+using System.Collections.ObjectModel;
 
 namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
+    
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -30,6 +35,8 @@ namespace WpfApp1
             Window1 exit = new Window1();
             this.Close();
             exit.Show();
+            
+            
         }
 
         private void sign_in_Click(object sender, RoutedEventArgs e)
@@ -37,6 +44,7 @@ namespace WpfApp1
             sign_in firstSignIn = new sign_in();
             this.Close();
             firstSignIn.Show();
+            
         }
 
         private void sign_up_Click(object sender, RoutedEventArgs e)
@@ -44,6 +52,13 @@ namespace WpfApp1
             sign_up firstSignUp = new sign_up();
             this.Close();
             firstSignUp.Show();
+        }
+
+        private void Preview_Books_Click(object sender, RoutedEventArgs e)
+        {
+            Preview_books PreviewBooks = new Preview_books();
+            this.Close();
+            PreviewBooks.Show();
         }
     }
 }

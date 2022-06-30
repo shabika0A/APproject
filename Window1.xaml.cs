@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp1
 {
@@ -20,6 +21,22 @@ namespace WpfApp1
         public Window1()
         {
             InitializeComponent();
+            void StartCloseTimer()
+            {
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(3d);
+                timer.Tick += TimerTick;
+                timer.Start();
+            }
+            void TimerTick(object sender, EventArgs e)
+            {
+                DispatcherTimer timer = (DispatcherTimer)sender;
+                timer.Stop();
+                timer.Tick -= TimerTick;
+                Close();
+            }
+            StartCloseTimer();
         }
+        
     }
 }

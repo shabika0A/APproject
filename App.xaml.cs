@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace WpfApp1
@@ -11,21 +8,77 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    
+    ///data must be taken from sql server
     public partial class App : Application
     {
-       
+        
     }
-    class book
-    {
 
-    }
-    class user
+    public class Book
     {
-
+        string name;
+        string author;
+        float price;
+        string summery;
+        float discount;
+        int discountDuration;
+        //book cover picture
+        float rate;
+        int sellingCount;
+        float sellingOutcome;
+        //pdf file
+        //preview pdf file
     }
-    class manager
+    public class User
     {
-
+        string name;
+        string lastName;
+        string phoneNumber;
+        string email;
+        string password;
+        float wallet;
+        List<Book> books;
+        List<Book> favorites;
+        List<Book> cart;
+        static List<string> emailsList = new List<string>();
+        ///vip and start and end time and books
+        bool isVIP;
+        int VIPdays;
     }
+    public class Manager
+    {
+        string name;
+        string lastName;
+        string phoneNumber;
+        string email;
+        string password;
+        float TotalCash;
+    }
+    public class VIP
+    {
+        float pricePerMounth;
+        List<Book> books;
+    }
+    
+    public class Collections
+    {
+        public static ObservableCollection<User> users = new ObservableCollection<User>();
+        public static ObservableCollection<Manager> managers = new ObservableCollection<Manager>();
+        public static ObservableCollection<Book> books = new ObservableCollection<Book>();
+        public static VIP vip = new VIP();
+    }
+    public class methods
+    {
+        public bool checkCVV(string p)
+        {
+            if (p.Length == 3 || p.Length == 4)
+            {
+                return true;
+            }
+            return false;
+        }
+        
+    }
+
+
 }

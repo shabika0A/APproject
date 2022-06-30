@@ -6,14 +6,10 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="" Height="582" Width="500">
-    <Window.Background>
-        <ImageBrush>
-            <ImageBrush.ImageSource>
-                <BitmapImage UriSource="D:\uni\ap\project =)\WpfApp1\exit.png"/>
-            </ImageBrush.ImageSource>
-        </ImageBrush>
-    </Window.Background>
     <Grid x:Name="exit">
+        <Grid.Background>
+            <ImageBrush ImageSource="\exit.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition  Height="281*"></RowDefinition>
 
