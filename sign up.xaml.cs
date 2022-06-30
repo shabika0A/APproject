@@ -90,6 +90,7 @@ namespace WpfApp1
             {
                 MessageBox.Show("wrong phone number format");
 
+<<<<<<< HEAD
             }
             else if (!checkEmail(Email.Text))
             {
@@ -119,6 +120,12 @@ namespace WpfApp1
                Collections.users.Add(u);
                 
             }
+=======
+        private void IsManager_Checked(object sender, RoutedEventArgs e)
+        {
+            user NewUser = new user();
+            NewUser.IsManager = true;
+>>>>>>> 5e7b12f8c1d4c7e19535eb576bdda5e8d63a371d
         }
     }
 }

@@ -31,6 +31,7 @@ namespace WpfApp1
     }
     public class User
     {
+<<<<<<< HEAD
         string name;
         string lastName;
         string phoneNumber;
@@ -44,9 +45,13 @@ namespace WpfApp1
         ///vip and start and end time and books
         bool isVIP;
         int VIPdays;
+=======
+        public bool IsManager { get; set; }
+>>>>>>> 5e7b12f8c1d4c7e19535eb576bdda5e8d63a371d
     }
     public class Manager
     {
+<<<<<<< HEAD
         string name;
         string lastName;
         string phoneNumber;
@@ -58,6 +63,9 @@ namespace WpfApp1
     {
         float pricePerMounth;
         List<Book> books;
+=======
+        
+>>>>>>> 5e7b12f8c1d4c7e19535eb576bdda5e8d63a371d
     }
     
     public class Collections

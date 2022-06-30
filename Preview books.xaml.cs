@@ -9,7 +9,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+<<<<<<< HEAD
 using System.Collections.ObjectModel;
+=======
+>>>>>>> 5e7b12f8c1d4c7e19535eb576bdda5e8d63a371d
 
 namespace WpfApp1
 {
