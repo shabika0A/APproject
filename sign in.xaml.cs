@@ -22,9 +22,8 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
-
-        
-
+        bool isManagerBool = false;
+        bool signedIn = false;
         private void back_Click_1(object sender, RoutedEventArgs e)
         {
             MainWindow m = new MainWindow();
@@ -34,9 +33,56 @@ namespace WpfApp1
 
         private void IsManager_Checked(object sender, RoutedEventArgs e)
         {
-            //user NewUser = new user();
-            //NewUser.IsManager = true;
+            isManagerBool = true;
             
+        }
+
+        
+
+        private void sign_in1_Click(object sender, RoutedEventArgs e)
+        {
+            if (isManagerBool)
+            {
+                if (Manager.emailsList.IndexOf(Email.Text) != -1)
+                {
+                    Current.manager = Collections.managers[Manager.emailsList.IndexOf(Email.Text)];
+                    if (Current.manager.checkPassword(password.Text))
+                    {
+                        signedIn = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong password !");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("this email does not exist !");
+                }
+            }
+            else
+            {
+                if (User.emailsList.IndexOf(Email.Text)!=-1)
+                {
+                    Current.user = Collections.users[User.emailsList.IndexOf(Email.Text)];
+                    if (Current.user.checkPassword(password.Text))
+                    {
+                        signedIn = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("wrong password !");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("this email does not exist !");
+                }
+            }
+            if (signedIn)
+            {
+                ///close and show next window
+            }
         }
     }
 }

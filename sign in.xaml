@@ -20,7 +20,7 @@
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <TextBlock Name="TextBlock1" Height="50" Width="131"      Text="Sign In"  VerticalAlignment="Top"  FontStyle="Normal"    HorizontalAlignment="Center" Foreground="#FF00192E" FontSize="40" FontWeight="Bold" FontFamily="Cambria" Margin="0,100,0,0"/>
-        <Button x:Name="sign_up_in_page" Grid.Row="3" Content="sign in" Margin="390,43,390,0" VerticalAlignment="Top" Height="48" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e"/>
+        <Button x:Name="sign_in1" Grid.Row="3" Content="sign in" Margin="410,52,410,0" VerticalAlignment="Top" Height="48" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="sign_in1_Click"/>
         <Button x:Name="back" Grid.Row="4" Content="Back" Margin="936,26,30,22" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="back_Click_1" />
         <TextBox x:Name="Email" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="Email" Foreground="#ff00192e" Grid.Row="1"/>
         <TextBox x:Name="password" Margin="374,4,374,4" Opacity="0.69" materialDesign:HintAssist.Hint="Password" Foreground="#ff00192e" Grid.Row="2"/>

@@ -96,6 +96,16 @@ namespace WpfApp1
                 MessageBox.Show("wrong email format");
 
             }
+            else if (isManagerBool&&Manager.emailsList.Contains(Email.Text))
+            {
+                MessageBox.Show("this email already exist !");
+
+            }
+            else if (User.emailsList.Contains(Email.Text))
+            {
+                MessageBox.Show("this email already exist !");
+
+            }
             else if (!checkPassword(password.Text))
             {
                 MessageBox.Show("wrong password format");
@@ -108,15 +118,15 @@ namespace WpfApp1
             }
             else if (isManagerBool)
             {
-                Manager u = new Manager();
+                Manager u = new Manager(name.Text,lastName.Text,phoneNumber.Text,Email.Text,password.Text);
                 Collections.managers.Add(u);
                 
             }
             else
             {
-                User u = new User();
+                User u = new User(name.Text, lastName.Text, phoneNumber.Text, Email.Text, password.Text);
 
-               Collections.users.Add(u);
+                Collections.users.Add(u);
                 
             }
         }
