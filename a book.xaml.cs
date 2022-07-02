@@ -17,9 +17,11 @@ namespace WpfApp1
     /// </summary>
     public partial class a_book : Window
     {
+        Book ThisBook;
         public a_book(Book book)
         {
             DataContext = book;
+            this.ThisBook = book;
             InitializeComponent();
         }
 
@@ -27,6 +29,13 @@ namespace WpfApp1
         {
             preview p = new preview();
             p.Show();
+            this.Close();
+        }
+
+        private void read_sample_Click(object sender, RoutedEventArgs e)
+        {
+            PDF P = new PDF(ThisBook);
+            P.Show();
             this.Close();
         }
     }

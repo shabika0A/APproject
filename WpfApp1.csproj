@@ -11,6 +11,7 @@
     <None Remove="exit.jpg" />
     <None Remove="GreatExpectations.jpg" />
     <None Remove="LesMiserables.jpg" />
+    <None Remove="Little+Prince sample.pdf" />
     <None Remove="SearchIcon.png" />
     <None Remove="sign in.png" />
     <None Remove="TheLittlePrince.jpg" />
@@ -42,6 +43,9 @@
       <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd</HintPath>
       <IsWinMDFile>true</IsWinMDFile>
     </Reference>
+    <Resource Include="Little+Prince sample.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="sign in.png" />
   </ItemGroup>
 

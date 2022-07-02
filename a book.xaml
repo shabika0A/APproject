@@ -36,7 +36,7 @@
             </StackPanel>
         </Viewbox>
         <Button x:Name="back" Content="Back" Margin="936,515,30,77" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="back_Click_1" />
-        <Button x:Name="read_sample" Content="read sample"  Background="#FFFFC857" FontSize="18" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="back_Click_1" Margin="110,482,787,110" />
+        <Button x:Name="read_sample" Content="read sample"  Background="#FFFFC857" FontSize="18" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="read_sample_Click" Margin="110,482,787,110" />
         <Label Content="summery :" HorizontalAlignment="Left" Height="35" Margin="479,66,0,0" VerticalAlignment="Top" Width="81"/>
 
     </Grid>

@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
-using Windows.Storage;
+using System;
+//using Windows.Storage;
+//using System.Windows;
 
 
 
@@ -30,9 +32,10 @@ namespace WpfApp1
         public float? rate { set; get; }
         public int sellingCount { set; get; }
         public float sellingOutcome { set; get; }
+        public string PDFAddress { get; set; }
         //pdf file
         //preview pdf file
-        public Book(string n, string a, float p, string pub, string s, string CoverPictureType)
+        public Book(string n, string a, float p, string pub, string s, string CoverPictureType, string PDFName)
         {
             name = n;
             author = a;
@@ -45,6 +48,8 @@ namespace WpfApp1
             sellingCount = 0;
             sellingOutcome = 0;
             this.CoverAddress = "\\" + name + "." + CoverPictureType;  //CoverAddress;
+            string filename = PDFName + ".PDF";
+            this.PDFAddress = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 24) + filename;
         }
     }
     public class User
