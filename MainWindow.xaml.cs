@@ -28,6 +28,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            user_dashboard u = new user_dashboard();
+            u.Show();
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)

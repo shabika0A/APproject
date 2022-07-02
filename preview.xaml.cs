@@ -22,8 +22,8 @@ namespace WpfApp1
     {
         public preview()
         {
-            Collections.books.Add(new Book("one","me",10,"ofogh","one diary"));
-            Collections.books.Add(new Book("two", "me", 10, "ofogh", "two diary"));
+            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "jpg"));
+            Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "jpg" ));
             //Collections.books.Add(new Book("five", "me", 10, "ofogh", "my diary"));
             //Collections.books.Add(new Book("ten", "me", 10, "ofogh", "my diary"));
             //Collections.books.Add(new Book("youuu", "me", 10, "ofogh", "my diary"));

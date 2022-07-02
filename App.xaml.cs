@@ -26,12 +26,13 @@ namespace WpfApp1
         public float discount { set; get; }
         public int discountDuration { set; get; }
         //book cover picture
+        public string CoverAddress { get; set; }
         public float? rate { set; get; }
         public int sellingCount { set; get; }
         public float sellingOutcome { set; get; }
         //pdf file
         //preview pdf file
-        public Book(string n,string a,float p,string pub,string s)
+        public Book(string n, string a, float p, string pub, string s, string CoverPictureType)
         {
             name = n;
             author = a;
@@ -43,6 +44,7 @@ namespace WpfApp1
             rate = null;
             sellingCount = 0;
             sellingOutcome = 0;
+            this.CoverAddress = "\\" + name + "." + CoverPictureType;  //CoverAddress;
         }
     }
     public class User
