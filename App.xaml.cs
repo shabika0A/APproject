@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
+using Windows.Storage;
 
 
 
@@ -155,7 +156,17 @@ namespace WpfApp1
         public static ObservableCollection<Manager> managers = new ObservableCollection<Manager>();
         public static ObservableCollection<Book> books = new ObservableCollection<Book>();
         public static VIP vip = new VIP();
-        
+        public static int findBookIndexByName(string n)
+        {
+            for(int i = 0; i < books.Count; i++)
+            {
+                if (books[i].name == n)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
     public class Current
     {

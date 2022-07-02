@@ -22,11 +22,11 @@ namespace WpfApp1
     {
         public preview()
         {
-            Collections.books.Add(new Book("one","me",10,"ofogh","my diary"));
-            Collections.books.Add(new Book("two", "me", 10, "ofogh", "my diary"));
-            Collections.books.Add(new Book("five", "me", 10, "ofogh", "my diary"));
-            Collections.books.Add(new Book("ten", "me", 10, "ofogh", "my diary"));
-            Collections.books.Add(new Book("youuu", "me", 10, "ofogh", "my diary"));
+            Collections.books.Add(new Book("one","me",10,"ofogh","one diary"));
+            Collections.books.Add(new Book("two", "me", 10, "ofogh", "two diary"));
+            //Collections.books.Add(new Book("five", "me", 10, "ofogh", "my diary"));
+            //Collections.books.Add(new Book("ten", "me", 10, "ofogh", "my diary"));
+            //Collections.books.Add(new Book("youuu", "me", 10, "ofogh", "my diary"));
             //Collections.books.Add(new Book("6")); Collections.books.Add(new Book("7")); Collections.books.Add(new Book("8"));
 
 
@@ -57,7 +57,10 @@ namespace WpfApp1
 
         private void b_is_clicked(object sender, RoutedEventArgs e)
         {
-            
+            Book bb= (Book)(sender as FrameworkElement).DataContext;
+            a_book bWindow = new a_book(bb);
+            bWindow.Show();
+            this.Close();
         }
     }
     
