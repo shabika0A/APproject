@@ -26,7 +26,7 @@ namespace WpfApp1
         public string publisher { set; get; }
         public string summery { set; get; }
         public float discount { set; get; }
-        public int discountDuration { set; get; }
+        public DateTime discountDeadline { set; get; }
         //book cover picture
         public string CoverAddress { get; set; }
         public float? rate { set; get; }
@@ -35,15 +35,15 @@ namespace WpfApp1
         public string PDFAddress { get; set; }
         //pdf file
         //preview pdf file
-        public Book(string n, string a, float p, string pub, string s, string CoverPictureType, string PDFName)
+        public Book(string n, string a, float p, string pub, string s, float DiscountAMount, DateTime Deadline, string CoverPictureType, string PDFName)
         {
             name = n;
             author = a;
             price = p;
             publisher = pub;
             summery = s;
-            discount = 0;
-            discountDuration = 0;
+            discount = DiscountAMount;
+            discountDeadline = Deadline;
             rate = null;
             sellingCount = 0;
             sellingOutcome = 0;

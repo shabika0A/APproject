@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfApp1.PaymentPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="PaymentPage" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="/back.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="74"></RowDefinition>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="126"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <TextBlock Name="Title" Height="50" Width="260" Text="Payment Page"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Center" Foreground="#FF00192E" FontSize="40" FontWeight="Bold" FontFamily="Cambria"/>
+        
+        <Button x:Name="Pay" Grid.Row="5" Content="Pay" Margin="64,0,640,0" VerticalAlignment="Center" Height="48" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="Pay_Click"/>
+        
+        <Button x:Name="back" Grid.Row="6" Content="Back" Margin="656,22,30,-9" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e"/>
+        
+        <TextBlock Name="CardNumberTitle" Height="20" Width="102" Text="Card Number:"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="15" FontWeight="Bold" FontFamily="Cambria" Grid.Row="1" Margin="64,0,0,0"/>
+        <TextBox Name="CardNumber1" Grid.Row="1" Margin="171,10,574,10" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10"/>
+        <TextBox Name="CardNumber2" Grid.Row="1" Margin="253,10,492,10" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10"/>
+        <TextBox Name="CardNumber3" Grid.Row="1" Margin="336,10,409,10" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10"/>
+        <TextBox Name="CardNumber4" Grid.Row="1" Margin="413,10,332,10" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10"/>
+
+        <TextBlock Name="CVV2Title" Height="20" Width="102" Text="CVV2:"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="15" FontWeight="Bold" FontFamily="Cambria" Grid.Row="2" Margin="64,0,0,0"/>
+        <TextBox Name="CVV2" Grid.Row="2" Margin="171,10,574,10" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10"/>
+
+        <TextBlock Name="ExpireDateTitle" Height="20" Width="102" Text="Expire Date:"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="15" FontWeight="Bold" FontFamily="Cambria" Grid.Row="3" Margin="64,0,0,0"/>
+        <TextBox Name="ExpireDate1" Grid.Row="3" Margin="171,10,574,10" Background="#FFFFFF" BorderBrush="#FFFFFF" materialDesign:HintAssist.Hint="Year" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Name="ExpireDate2" Grid.Row="3" Margin="253,10,492,10" Background="#FFFFFF" BorderBrush="#FFFFFF" materialDesign:HintAssist.Hint="Month" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+        <TextBlock Name="PasswordTitle" Height="20" Width="102" Text="Password:"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="15" FontWeight="Bold" FontFamily="Cambria" Grid.Row="4" Margin="64,0,0,0"/>
+        <TextBox Name="Password" Grid.Row="4" Margin="171,10,492,10" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10"/>
+        
+        <Label Content="Final Price:" Grid.Row="1"  Margin="540,0,0,0" FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Width="260"></Label>
+        <TextBlock Text="{Binding FinalPrice}" Grid.Row="1" Margin="656,4,0,36" FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Width="144" Grid.RowSpan="2"></TextBlock>
+
+    </Grid>
+</Window>

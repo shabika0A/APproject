@@ -22,8 +22,8 @@ namespace WpfApp1
     {
         public preview()
         {
-            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "jpg", "Little+Prince sample"));
-            Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "jpg" , "Great Expectations sample"));
+            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", (float)0.5, new DateTime(2022,11,5), "jpg", "Little+Prince sample"));
+            Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", (float)0.2, new DateTime(2022, 8, 9), "jpg" , "Great Expectations sample"));
             //Collections.books.Add(new Book("five", "me", 10, "ofogh", "my diary"));
             //Collections.books.Add(new Book("ten", "me", 10, "ofogh", "my diary"));
             //Collections.books.Add(new Book("youuu", "me", 10, "ofogh", "my diary"));
@@ -36,10 +36,11 @@ namespace WpfApp1
 
         private void back_Click_1(object sender, RoutedEventArgs e)
         {
-           
             MainWindow m = new MainWindow();
             m.Show();
             this.Close();
+            //PaymentPage P = new PaymentPage();
+            //P.Show();
         }
 
         private void Search_button_Click(object sender, RoutedEventArgs e)
