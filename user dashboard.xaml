@@ -11,16 +11,98 @@
         <ImageBrush ImageSource="/back.jpg"/>
     </Window.Background>
     <Grid>
-        <TabControl TabStripPlacement="Top" Background="#FF6295BF" BorderBrush="#FF00192E" Foreground="#FF00192E" >
-            <TabItem  Header="Home">
+        <TabControl TabStripPlacement="Top" Background="#FF00192E" BorderBrush="#FF00192E" Foreground="#FF00192E" SelectionChanged="TabControl_SelectionChanged" >
+            <TabItem x:Name="Home"  Header="Home" Initialized="Home_Initialized" Foreground="#FF050507" BorderBrush="#FF97E2DB" Background="#FF97E2DB" >
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="203*"/>
-                        <RowDefinition Height="41*"/>
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="1" Margin="0,0,0,51">
+                    <ScrollViewer Grid.Row="1" Margin="30,0,30,10" Initialized="ScrollViewer_Initialized">
+                        <ItemsControl ItemsSource="{Binding }" Width="984" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="4" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Button x:Name="book_cover"  Margin="20,0" Background="#00FFFFFF" BorderBrush="#00FFFFFF" Height="175" Width="160" Click="book_cover_Click" >
+                                            <Image x:Name="BookCover1" Source="{Binding CoverAddress}"  Stretch="Fill"></Image>
+                                        </Button>
+                                        <TextBlock x:Name="t1" Text="{Binding name}" Margin="50,0" FontStyle="Normal" Foreground="#FF00192E"  FontWeight="Bold" FontFamily="Cambria"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="author:" FontSize="10" Margin="50,0,0,0"></Label>
+                                            <TextBlock Text="{Binding author}" Margin="0,0"></TextBlock>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding publisher}" Margin="55,0,0,0"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="price:" FontSize="10" Margin="50,0,0,0"></Label>
+                                            <TextBlock Text="{Binding price}" Margin="0,0"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button x:Name="add_to_wishlist" Height="30" Width="30" Margin="50,0,0,0" BorderBrush="#00FFFFFF" Click="add_to_wishlist_Click">
+                                                <Button.Background>
+                                                    <ImageBrush ImageSource="/addTowishList.jpg" Stretch="Fill"/>
+                                                </Button.Background>
+                                                <Image x:Name="wishList" Source="/addTowishList.jpg"  Stretch="Fill" OpacityMask="{x:Null}"/>
+                                            </Button>
+                                            <Button x:Name="add_to_cart" Content="Add to cart" Margin="20,0,0,0" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="105" Background="#FFFFC857" Foreground="#FF2C1E13" Click="add_to_cart_Click">
+
+                                            </Button>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    <TextBox x:Name="User_Search_Books" Opacity="0.69" materialDesign:HintAssist.Hint="Search Books! by name or author" Foreground="#ff00192e" Grid.Row="0" FontSize="20" FontWeight="Bold" Margin="46,20,418,20" />
+                    <Button x:Name="user_Search_button" Grid.Row="0" Margin="598,24,418,24" BorderBrush="#00FFFFFF" Background="#00FFFFFF" Width="50" Click="user_Search_button_Click" >
+                        <Image x:Name="Search_Icon" Source="\SearchIcon.png" Stretch="Fill"></Image>
+                    </Button>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem x:Name="my_books" Header="My Books" Background="#FF97E2DB">
+                <Grid>
+                    <ScrollViewer x:Name="book_viewer"  Margin="30,0,30,10" >
+                        <ItemsControl ItemsSource="{Binding }" Width="984" Height="479" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="4" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Button x:Name="book_cover"  Margin="20,0" Background="#00FFFFFF" BorderBrush="#00FFFFFF" Height="175" Width="160" Click="book_cover_Click" >
+                                            <Image x:Name="BookCover1" Source="{Binding CoverAddress}"  Stretch="Fill"></Image>
+                                        </Button>
+                                        <TextBlock x:Name="t1" Text="{Binding name}" Margin="50,0" FontStyle="Normal" Foreground="#FF00192E"  FontWeight="Bold" FontFamily="Cambria"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="author:" FontSize="10" Margin="50,0,0,0"></Label>
+                                            <TextBlock Text="{Binding author}" Margin="0,0"></TextBlock>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding publisher}" Margin="55,0,0,0"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="cart" Header="Cart" Background="#FF97E2DB">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="541*"/>
+                        <ColumnDefinition Width="525*"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer Margin="0,0,0,110" Grid.ColumnSpan="2">
                         <ItemsControl ItemsSource="{Binding }" >
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -30,7 +112,7 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <Button  Margin="20,0" Background="#00FFFFFF" BorderBrush="#00FFFFFF" Height="175" Width="160" >
+                                        <Button  Margin="20,0" Background="#00FFFFFF" BorderBrush="#00FFFFFF" Height="175" Width="160" Click="book_cover_Click" >
                                             <Image x:Name="BookCover1" Source="{Binding CoverAddress}"  Stretch="Fill"></Image>
                                         </Button>
                                         <TextBlock x:Name="t1" Text="{Binding name}" Margin="50,0" FontStyle="Normal" Foreground="#FF00192E"  FontWeight="Bold" FontFamily="Cambria"></TextBlock>
@@ -38,31 +120,78 @@
                                             <Label Content="author:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding author}" Margin="0,0"></TextBlock>
                                         </StackPanel>
+                                        <TextBlock Text="{Binding publisher}" Margin="55,0,0,0"></TextBlock>
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="price:" FontSize="10" Margin="50,0,0,0"></Label>
-                                            <TextBlock Text="{Binding price}" Margin="0,0"></TextBlock>
+                                            <TextBlock  Text="{Binding price}" Margin="0,0" Foreground="#FFB22020"></TextBlock>
                                         </StackPanel>
-                                        <TextBlock Text="{Binding publisher}" Margin="55,0,0,0"></TextBlock>
+                                        <Button x:Name="remove_from_cart" Content="remove" Margin="20,0,0,0" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="105" Background="#FFFFC857" Foreground="#FF2C1E13" Click="remove_from_cart_Click" >
+                                        </Button>
+
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
-
-                    <TextBox x:Name="Search_Books" Opacity="0.69" materialDesign:HintAssist.Hint="Search Books! by name or author" Foreground="#ff00192e" Grid.Row="0" FontSize="20" FontWeight="Bold" Margin="138,20,296,20" />
-                    <Button Name="Search_button" Grid.Row="0" Margin="708,28,308,20" BorderBrush="#00FFFFFF" Background="#00FFFFFF" Width="50" >
-                        <Image x:Name="Search_Icon" Source="\SearchIcon.png" Stretch="Fill"></Image>
-                    </Button>
+                    <Button x:Name="pay_online" Content="pay online" HorizontalAlignment="Left" Height="28" Margin="336,455,0,0" VerticalAlignment="Top" Width="121" Click="pay_online_Click" Foreground="#FFFFC857" Grid.Column="1"/>
+                    <Button x:Name="pay_by_wallet" Content="pay by wallet" HorizontalAlignment="Left" Height="28" Margin="117,455,0,0" VerticalAlignment="Top" Width="121" Click="pay_online_Click" Foreground="#FFFFC857" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" FontSize="20" Height="28" Margin="317,455,0,0" Text="total price:" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
+                    <TextBlock x:Name="priceBox" FontSize="20" HorizontalAlignment="Left" Text="{Binding CartTotalPrice}" Height="24" Margin="425,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Foreground="#FF00192E"/>
                 </Grid>
-                
             </TabItem>
-            <TabItem Header="My Books"></TabItem>
-            <TabItem Header="Cart"></TabItem>
-            <TabItem Header="wishlist"></TabItem>
-            <TabItem Header="Wallet"></TabItem> 
-            
-            <TabItem Header="Edit Profile"></TabItem>
-           
+            <TabItem x:Name="favorites" Header="Favorites" Background="#FF97E2DB">
+                <Grid>
+                    <ScrollViewer Margin="0,0,0,10">
+                        <ItemsControl ItemsSource="{Binding }" Height="506" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="4" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Button  Margin="20,0" Background="#00FFFFFF" BorderBrush="#00FFFFFF" Height="175" Width="160" Click="book_cover_Click" >
+                                            <Image x:Name="BookCover1" Source="{Binding CoverAddress}"  Stretch="Fill"></Image>
+                                        </Button>
+                                        <TextBlock x:Name="t1" Text="{Binding name}" Margin="50,0" FontStyle="Normal" Foreground="#FF00192E"  FontWeight="Bold" FontFamily="Cambria"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="author:" FontSize="10" Margin="50,0,0,0"></Label>
+                                            <TextBlock Text="{Binding author}" Margin="0,0"></TextBlock>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding publisher}" Margin="55,0,0,0"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="price:" FontSize="10" Margin="50,0,0,0"></Label>
+                                            <TextBlock  Text="{Binding price}" Margin="0,0" Foreground="Black"></TextBlock>
+                                            <Button Width="80" Click="remove_from_wishlist_Click" FontSize="12" Margin="20,0,0,0">
+                                                remove
+                                            </Button>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Wallet" Background="#FF97E2DB"></TabItem>
+
+            <TabItem Header="Edit Profile" Background="#FF97E2DB">
+                <Grid>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="503" Margin="0,7,0,0" VerticalAlignment="Top" Width="225" Background="#FF00192E"/>
+                    <Image Source="/profile.png" Margin="-4,10,928,376" Stretch="Uniform">
+
+                        <Image.Clip>
+                            <EllipseGeometry Center="55.5,55.5" RadiusX="40" RadiusY="40" />
+                        </Image.Clip>
+                    </Image>
+                    <TextBlock  HorizontalAlignment="Left" Height="20" Margin="8,113,0,0" Text="{Binding currentUser.name}" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Foreground="#FF97E2DB" />
+                    <TextBlock  HorizontalAlignment="Left" Height="20" Margin="107,111,0,0" Text="{Binding currentUser.lastName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Foreground="#FF97E2DB" />
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="sign_out" Header="sign out" Background="#FF97E2DB"/>
 
         </TabControl>
     </Grid>

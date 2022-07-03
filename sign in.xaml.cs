@@ -45,8 +45,8 @@ namespace WpfApp1
             {
                 if (Manager.emailsList.IndexOf(Email.Text) != -1)
                 {
-                    Current.manager = Collections.managers[Manager.emailsList.IndexOf(Email.Text)];
-                    if (Current.manager.checkPassword(password.Text))
+                    Collections.currentManager = Collections.managers[Manager.emailsList.IndexOf(Email.Text)];
+                    if (Collections.currentManager.checkPassword(password.Text))
                     {
                         signedIn = true;
                     }
@@ -64,8 +64,8 @@ namespace WpfApp1
             {
                 if (User.emailsList.IndexOf(Email.Text)!=-1)
                 {
-                    Current.user = Collections.users[User.emailsList.IndexOf(Email.Text)];
-                    if (Current.user.checkPassword(password.Text))
+                    Collections.currentUser = Collections.users[User.emailsList.IndexOf(Email.Text)];
+                    if (Collections.currentUser.checkPassword(password.Text))
                     {
                         signedIn = true;
                     }

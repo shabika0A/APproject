@@ -27,6 +27,10 @@ namespace WpfApp1
     {
         public MainWindow()
         {
+            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "jpg"));
+            Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "jpg"));
+            Collections.currentUser = new User("shakiba", "anaraki", "09123456789", "a@b.com", "something");
+            Collections.currentUser.books.Add(Collections.books[0]);
             InitializeComponent();
             user_dashboard u = new user_dashboard();
             u.Show();

@@ -50,7 +50,7 @@
         <Button x:Name="back" Grid.Row="2" Content="Back" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="back_Click_1" Margin="871,10,30,43" />
         <TextBox x:Name="Search_Books" Opacity="0.69" materialDesign:HintAssist.Hint="Search Books! by name or author" Foreground="#ff00192e" Grid.Row="0" FontSize="20" FontWeight="Bold" Margin="138,20,296,20" />
         <Button Name="Search_button" Grid.Row="0" Margin="708,28,308,20" BorderBrush="#00FFFFFF" Background="#00FFFFFF" Width="50" Click="Search_button_Click" >
-            <Image x:Name="Search_Icon" Source="\SearchIcon.png" Stretch="Fill"></Image>
+            <Image x:Name="Search_Icon" Source="/SearchIcon - Copy.png" Stretch="Fill"></Image>
         </Button>
 
     </Grid>

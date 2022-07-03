@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using Windows.Storage;
+using System;
 
 
 
@@ -26,10 +27,14 @@ namespace WpfApp1
         public float discount { set; get; }
         public int discountDuration { set; get; }
         //book cover picture
+        public DateTime discountDeadline { set; get; }
+        //book cover picture
+        public string PDFAddress { get; set; }
         public string CoverAddress { get; set; }
         public float? rate { set; get; }
         public int sellingCount { set; get; }
         public float sellingOutcome { set; get; }
+
         //pdf file
         //preview pdf file
         public Book(string n, string a, float p, string pub, string s, string CoverPictureType)
@@ -55,6 +60,7 @@ namespace WpfApp1
         public string email;
         string password;
         float wallet;
+        public float CartTotalPrice { set; get; }
         public  ObservableCollection<Book> books;
         public  ObservableCollection <Book> favorites;
         public  ObservableCollection<Book> cart;
@@ -169,15 +175,35 @@ namespace WpfApp1
             }
             return -1;
         }
+        public static User currentUser;
+        public static Manager currentManager;
+
     }
-    public class Current
-    {
-        public static User user;
-        public static Manager manager;
-        //public Collections collections;
-    }
+    //public class Current
+    //{
+        
+    //    //public Collections collections;
+    //}
     public class Methods
     {
+        public static float calculateTotalPriceOfCart(User u)
+        {
+            float FinalPrice = 0;
+
+            foreach (Book b in u.cart)
+            {
+                DateTime ThisTime = DateTime.Now;
+                if (DateTime.Compare(ThisTime, b.discountDeadline) <= 0)
+                {
+                    FinalPrice += (b.price * b.discount);
+                }
+                else
+                {
+                    FinalPrice += b.price;
+                }
+            }
+            return FinalPrice;
+        }
         public bool checkCVV(string p)
         {
             if (p.Length == 3 || p.Length == 4)

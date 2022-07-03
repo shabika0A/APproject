@@ -22,14 +22,11 @@ namespace WpfApp1
     {
         public preview()
         {
-            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "jpg"));
-            Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "jpg" ));
+           
             //Collections.books.Add(new Book("five", "me", 10, "ofogh", "my diary"));
             //Collections.books.Add(new Book("ten", "me", 10, "ofogh", "my diary"));
             //Collections.books.Add(new Book("youuu", "me", 10, "ofogh", "my diary"));
             //Collections.books.Add(new Book("6")); Collections.books.Add(new Book("7")); Collections.books.Add(new Book("8"));
-
-
             DataContext = Collections.books;
             InitializeComponent();
         }
