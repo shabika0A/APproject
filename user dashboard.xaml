@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
         mc:Ignorable="d"
         Title="" Height="584" Width="1066">
     <Window.Background>
@@ -88,6 +89,8 @@
                                             <TextBlock Text="{Binding author}" Margin="0,0"></TextBlock>
                                         </StackPanel>
                                         <TextBlock Text="{Binding publisher}" Margin="55,0,0,0"></TextBlock>
+                                        <Button x:Name="rate" Content="rate this!" Margin="20,0,0,0" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="105" Background="#FFFFC857" Foreground="#FF2C1E13" Click="rate_Click">
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -175,10 +178,26 @@
                     </ScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem Header="Wallet" Background="#FF97E2DB"></TabItem>
-
-            <TabItem Header="Edit Profile" Background="#FF97E2DB">
+            <TabItem x:Name="Wallet" Header="Wallet" Background="#FF97E2DB">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="250"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="Title" Height="50" Width="222" Text="Your Wallet"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Center" Foreground="#FF00192E" FontSize="40" FontWeight="Bold" FontFamily="Cambria"/>
+
+                    <TextBlock Name="ChargeAmount" Height="50" Width="222" Text="Your Charge:"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="25" FontWeight="Bold" FontFamily="Cambria"  Grid.Row="1" Margin="44,0,0,0"/>
+                    <TextBlock x:Name="UserCharge" Text="{Binding Wallet}" Height="50" Grid.Row="1" Margin="210,0,0,0" FontStyle="Normal"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="25" FontWeight="Bold" FontFamily="Cambria" Width="222"/>
+
+                    <Button x:Name="Charge_your_wallet" Grid.Row="2" Content="Charge Your Wallet" Margin="281,0,281,0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48" Width="250" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="Charge_your_wallet_Click"/>
+
+                    <Button x:Name="BuyVIP" Grid.Row="3" Content="Buy VIP Subscription" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48" Width="250" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="BuyVIP_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="edit_profile" Header="Edit Profile" Background="#FF97E2DB">
+                <Grid Margin="0,11,0,-11">
                     <Border BorderThickness="1" HorizontalAlignment="Left" Height="503" Margin="0,7,0,0" VerticalAlignment="Top" Width="225" Background="#FF00192E"/>
                     <Image Source="/profile.png" Margin="-4,10,928,376" Stretch="Uniform">
 
@@ -186,8 +205,25 @@
                             <EllipseGeometry Center="55.5,55.5" RadiusX="40" RadiusY="40" />
                         </Image.Clip>
                     </Image>
-                    <TextBlock  HorizontalAlignment="Left" Height="20" Margin="8,113,0,0" Text="{Binding currentUser.name}" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Foreground="#FF97E2DB" />
-                    <TextBlock  HorizontalAlignment="Left" Height="20" Margin="107,111,0,0" Text="{Binding currentUser.lastName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Foreground="#FF97E2DB" />
+                    <TextBlock x:Name="showName"  HorizontalAlignment="Left" Height="20" Margin="8,125,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="#FF97E2DB" />
+                    <TextBlock x:Name="showLastName"  HorizontalAlignment="Left" Height="20" Margin="8,150,0,0" Text="{Binding currentUser.lastName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="#FF97E2DB" />
+                    <Image x:Name="isVIP" HorizontalAlignment="Left" Height="37" Margin="76,83,0,0" VerticalAlignment="Top" Width="36" Source="/vip.jpg" RenderTransformOrigin="0.135,0.325">
+                        <Image.Clip>
+                            <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17" />
+                        </Image.Clip>
+                    </Image>
+                    <Label Content="First Name:" HorizontalAlignment="Left" Height="22" Margin="350,70,0,0" VerticalAlignment="Top" Width="74"/>
+                    <Label Content="Last Name:" HorizontalAlignment="Left" Height="21" Margin="353,118,0,0" VerticalAlignment="Top" Width="74"/>
+                    <Label Content="Phone Number:" HorizontalAlignment="Left" Height="21" Margin="330,165,0,0" VerticalAlignment="Top" Width="94"/>
+                    <Label Content="Changing Password:" HorizontalAlignment="Left" Height="34" Margin="387,238,0,0" VerticalAlignment="Top" Width="126"/>
+                    <TextBox x:Name="name" HorizontalAlignment="Left" Height="28" Margin="430,73,0,0"  Text="{Binding name}" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" Foreground="#DD1D1818" CaretBrush="#FF8054CF"/>
+                    <TextBox x:Name="lastName" HorizontalAlignment="Left" Height="28" Margin="430,117,0,0"  Text="{Binding lastName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" Foreground="#DD1D1818" CaretBrush="#FF8054CF"/>
+                    <TextBox x:Name="phoneNumber" HorizontalAlignment="Left" Height="28" Margin="430,165,0,0"  Text="{Binding phoneNumber}" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" Foreground="#DD1D1818" CaretBrush="#FF8054CF"/>
+                    <TextBox x:Name="CPass" HorizontalAlignment="Left" Height="28" Margin="387,277,0,0"  materialDesign:HintAssist.Hint="Current Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" Foreground="#DD1D1818" CaretBrush="#FF8054CF"/>
+                    <TextBox x:Name="NPass" HorizontalAlignment="Left" Height="28" Margin="387,322,0,0"  materialDesign:HintAssist.Hint="New Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" Foreground="#DD1D1818" CaretBrush="#FF8054CF"/>
+                    <TextBox x:Name="CNPass" HorizontalAlignment="Left" Height="28" Margin="390,366,0,0"  materialDesign:HintAssist.Hint="Confirm New Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" Foreground="#DD1D1818" CaretBrush="#FF8054CF"/>
+                    <Button x:Name="save_changes" Content="save" HorizontalAlignment="Left" Height="34" Margin="817,122,0,0" VerticalAlignment="Top" Width="85" Click="save_changes_Click"/>
+                    <Button x:Name="save_password" Content="Change Password" HorizontalAlignment="Left" Height="34" Margin="786,327,0,0" VerticalAlignment="Top" Width="148" Click="save_password_Click_1"/>
 
                 </Grid>
             </TabItem>

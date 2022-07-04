@@ -13,27 +13,39 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for PaymentPage.xaml
+    /// Interaction logic for Charge_Wallet.xaml
     /// </summary>
-    public partial class PaymentPage : Window
+    public partial class Charge_Wallet : Window
     {
         User ThisUser;
-        float FinalPrice = 0;
-        public PaymentPage(User U,float price)
+        public Charge_Wallet(User U)
         {
-            //Price can be cart price or VIP price; This page is used for both payments
             //DataContext = price;////must be changed! after having banking account
             ThisUser = U;
             InitializeComponent();
-            priceBox.Text = price.ToString();
-
         }
 
-        
-
-        private void Pay_Click(object sender, RoutedEventArgs e)
+        private void Charge_btn_Click(object sender, RoutedEventArgs e)
         {
             bool ThereIsAProblem = false;
+
+            int[] ASCIIAmountToCharge = new int[ChargingAmount.Text.Length];
+            for (int i = 0; i < ASCIIAmountToCharge.Length; i++)
+            {
+                ASCIIAmountToCharge[i] = (int)ChargingAmount.Text.ToCharArray()[i];
+            }
+            foreach (int i in ASCIIAmountToCharge)
+            {
+                if (i < 48 || i > 57)
+                {
+                    MessageBox.Show("Charging amount must be numbers!");
+                    ThereIsAProblem = true;
+                    break;
+                }
+            }
+
+
+
             int[] ASCIICardNumber1 = new int[CardNumber1.Text.Length];
             int[] ASCIICardNumber2 = new int[CardNumber2.Text.Length];
             int[] ASCIICardNumber3 = new int[CardNumber3.Text.Length];
@@ -222,17 +234,14 @@ namespace WpfApp1
             if (ThereIsAProblem == false)
             {
                 //Check card info -> if OK...
-                MessageBox.Show("Paid Successfully!");
-                //add books to user's books list
+                Collections.currentUser.Wallet += int.Parse(ChargingAmount.Text);
+                MessageBox.Show("Charged Successfully!");
                 this.Close();
             }
-
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            //user_dashboard u = new user_dashboard();
-            //u.Show();
             this.Close();
         }
     }

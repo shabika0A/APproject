@@ -32,12 +32,13 @@ namespace WpfApp1
         public string PDFAddress { get; set; }
         public string CoverAddress { get; set; }
         public float? rate { set; get; }
+        public int? rateCount { set; get; }
         public int sellingCount { set; get; }
         public float sellingOutcome { set; get; }
 
         //pdf file
         //preview pdf file
-        public Book(string n, string a, float p, string pub, string s, string CoverPictureType)
+        public Book(string n, string a, float p, string pub, string s, string CoverPictureType, string PDFName)
         {
             name = n;
             author = a;
@@ -46,28 +47,32 @@ namespace WpfApp1
             summery = s;
             discount = 0;
             discountDuration = 0;
-            rate = null;
+            rate = 0;
+            rateCount = 0;
             sellingCount = 0;
             sellingOutcome = 0;
             this.CoverAddress = "\\" + name + "." + CoverPictureType;  //CoverAddress;
+            string filename = PDFName + ".PDF";
+            this.PDFAddress = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 24) + filename;
+
         }
     }
     public class User
     {
-        string name;
-        string lastName;
-        string phoneNumber;
-        public string email;
-        string password;
-        float wallet;
+        public string name { set; get; }
+        public string lastName { set; get; }
+        public string phoneNumber { set; get; }
+        public string email { set; get; }
+        string password { set; get; }
+        public float Wallet { set; get; }
         public float CartTotalPrice { set; get; }
         public  ObservableCollection<Book> books;
         public  ObservableCollection <Book> favorites;
         public  ObservableCollection<Book> cart;
         public static  ObservableCollection<string> emailsList = new  ObservableCollection<string>();
         ///vip and start and end time and books
-        bool isVIP;
-        int VIPdays;
+        public bool isVIP { set; get; }
+        int VIPdays { set; get; }
         public User(string n, string ln, string pn,string e,string p)
         {
             name = n;
@@ -76,7 +81,7 @@ namespace WpfApp1
             email = e;
             emailsList.Add(e);
             password = p;
-            wallet = 0;
+            Wallet = 0;
             books = new  ObservableCollection<Book>();
             favorites = new  ObservableCollection<Book>();
             cart = new  ObservableCollection<Book>();
@@ -93,6 +98,7 @@ namespace WpfApp1
         }
         public void changeName(string n)
         {
+            
             name = n;
         }
         public void changeLastName(string n)
@@ -154,8 +160,8 @@ namespace WpfApp1
     }
     public class VIP
     {
-        float pricePerMounth;
-         ObservableCollection<Book> books;
+        public float PricePerMonth { get; set; }
+        ObservableCollection<Book> books;
     }
     
     public class Collections

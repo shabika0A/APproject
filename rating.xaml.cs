@@ -10,25 +10,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for a_book.xaml
+    /// Interaction logic for rating.xaml
     /// </summary>
-    public partial class a_book : Window
+    public partial class rating : Window
     {
-        Book ThisBook;
-        public a_book(Book book)
+        Book cb;
+        public rating( Book b)
         {
-            DataContext = book;
+            cb = b;
             InitializeComponent();
-            ThisBook = book;
         }
 
-        private void back_Click_1(object sender, RoutedEventArgs e)
+        private void submitRate_Click(object sender, RoutedEventArgs e)
         {
-            PDF p = new PDF(ThisBook);
-            p.Show();
+            cb.rate = (cb.rate * (cb.rateCount) + rateBar.Value) / (cb.rateCount + 1);
+            cb.rateCount++;
             this.Close();
         }
     }

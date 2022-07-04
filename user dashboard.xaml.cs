@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace WpfApp1
 {
@@ -96,6 +97,22 @@ namespace WpfApp1
             {
                 DataContext = Collections.currentUser.favorites;
             }
+            else if (Wallet.IsSelected)
+            {
+                //DataContext = price;////must be changed! after having banking account
+                DataContext = Collections.currentUser;
+            }
+            else if (edit_profile.IsSelected)
+            {
+                DataContext = Collections.currentUser;
+                showName.Text = Collections.currentUser.name;
+                showLastName.Text = Collections.currentUser.lastName;
+                if (!Collections.currentUser.isVIP)
+                {
+                    //hide vip image
+                    isVIP.Visibility = Visibility.Hidden;
+                }
+            }
 
         }
 
@@ -122,7 +139,107 @@ namespace WpfApp1
         {
             PaymentPage p = new PaymentPage(Collections.currentUser,Collections.currentUser.CartTotalPrice);
             p.Show();
-            this.Close();
+            //this.Close();
+        }
+
+        private void Charge_your_wallet_Click(object sender, RoutedEventArgs e)
+        {
+            Charge_Wallet ChW = new Charge_Wallet(Collections.currentUser);
+            ChW.Show();
+        }
+
+        private void BuyVIP_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentPage P = new PaymentPage(Collections.currentUser, Collections.vip.PricePerMonth);
+            P.Show();
+        }
+
+        private void rate_Click(object sender, RoutedEventArgs e)
+        {
+            rating r = new rating((Book)(sender as FrameworkElement).DataContext);
+            r.Show();
+        }
+        bool checkPhoneNumber(string s)
+        {
+            //Regex r = new Regex();
+            if (!Regex.IsMatch(s, "^[0-9]+$") || s[0] != '0' || s[1] != '9' || s.Length != 11)
+            {
+                return false;
+            }
+            return true;
+        }
+        bool checkName(string s)
+        {
+
+            if (!Regex.IsMatch(s, "^[a-zA-Z]*$") || s.Length < 3 || s.Length > 32)
+            {
+                return false;
+            }
+            return true;
+        }
+        bool checkEmail(string s)
+        {
+
+            if (!Regex.IsMatch(s, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$") || s.Length < 3 || s.Length > 32)
+            {
+                return false;
+            }
+            return true;
+        }
+        bool checkPassword(string s)
+        {
+
+            if (Regex.IsMatch(s, "[a-z]") && Regex.IsMatch(s, "[A-Z]") && s.Length > 7 && s.Length < 41)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void save_changes_Click(object sender, RoutedEventArgs e)
+        {
+            if (!checkName(name.Text))
+            {
+                MessageBox.Show("wrong name format!");
+
+            }
+            else if (!checkName(lastName.Text))
+            {
+                MessageBox.Show("wrong last name format!");
+
+            }
+            else if (!checkPhoneNumber(phoneNumber.Text))
+            {
+                MessageBox.Show("wrong phone number format");
+
+            }
+            else
+            {
+                Collections.currentUser.changeName(name.Text);
+                Collections.currentUser.changeLastName(lastName.Text);
+                Collections.currentUser.changePhoneNumber(phoneNumber.Text);
+            }
+        }
+
+        
+
+        private void save_password_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!Collections.currentUser.checkPassword(CPass.Text))
+            {
+                MessageBox.Show("wrong Password! please enter again.");
+            }else if (!checkPassword(NPass.Text))
+            {
+                MessageBox.Show("new password has wrong format");
+
+            }else if (NPass.Text != CNPass.Text)
+            {
+                MessageBox.Show("new password is not confirmed well.");
+            }
+            else
+            {
+                Collections.currentUser.changePassword(NPass.Text);
+            }
         }
     }
 }
