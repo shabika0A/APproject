@@ -75,9 +75,9 @@ namespace WpfApp1
         {
             if (sign_out.IsSelected)
             {
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
+                MainWindow m = new MainWindow();
+                m.Show();
+                this.Close();
             }
             if (Home.IsSelected)
             {

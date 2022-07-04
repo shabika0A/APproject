@@ -123,7 +123,7 @@ namespace WpfApp1
         public string email;
         public static  ObservableCollection<string> emailsList = new  ObservableCollection<string>();
         string password;
-        float TotalCash;
+        public float TotalCash { get; set; }
         public Manager(string n, string ln, string pn, string e, string p)
         {
             name = n;
