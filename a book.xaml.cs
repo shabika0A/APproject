@@ -17,15 +17,17 @@ namespace WpfApp1
     /// </summary>
     public partial class a_book : Window
     {
+        Book ThisBook;
         public a_book(Book book)
         {
             DataContext = book;
             InitializeComponent();
+            ThisBook = book;
         }
 
         private void back_Click_1(object sender, RoutedEventArgs e)
         {
-            preview p = new preview();
+            PDF p = new PDF(ThisBook);
             p.Show();
             this.Close();
         }

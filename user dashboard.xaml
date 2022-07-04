@@ -175,7 +175,24 @@
                     </ScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem Header="Wallet" Background="#FF97E2DB"></TabItem>
+            <TabItem x:Name="Wallet" Header="Wallet" Background="#FF97E2DB">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="250"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="Title" Height="50" Width="222" Text="Your Wallet"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Center" Foreground="#FF00192E" FontSize="40" FontWeight="Bold" FontFamily="Cambria"/>
+
+                    <TextBlock Name="ChargeAmount" Height="50" Width="222" Text="Your Charge:"  VerticalAlignment="Center"  FontStyle="Normal"    HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="25" FontWeight="Bold" FontFamily="Cambria"  Grid.Row="1" Margin="44,0,0,0"/>
+                    <TextBlock x:Name="UserCharge" Text="{Binding Wallet}" Height="50" Grid.Row="1" Margin="210,0,0,0" FontStyle="Normal"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="25" FontWeight="Bold" FontFamily="Cambria" Width="222"/>
+
+                    <Button x:Name="Charge_your_wallet" Grid.Row="2" Content="Charge Your Wallet" Margin="281,0,281,0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48" Width="250" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="Charge_your_wallet_Click"/>
+
+                    <Button x:Name="BuyVIP" Grid.Row="3" Content="Buy VIP Subscription" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48" Width="250" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="BuyVIP_Click"/>
+                </Grid>
+            </TabItem>
 
             <TabItem Header="Edit Profile" Background="#FF97E2DB">
                 <Grid>

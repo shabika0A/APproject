@@ -74,9 +74,9 @@ namespace WpfApp1
         {
             if (sign_out.IsSelected)
             {
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
+                MainWindow m = new MainWindow();
+                m.Show();
+                this.Close();
             }
             if (Home.IsSelected)
             {
@@ -95,6 +95,11 @@ namespace WpfApp1
             else if (favorites.IsSelected)
             {
                 DataContext = Collections.currentUser.favorites;
+            }
+            else if (Wallet.IsSelected)
+            {
+                //DataContext = price;////must be changed! after having banking account
+                DataContext = Collections.currentUser.Wallet;
             }
 
         }
@@ -122,7 +127,19 @@ namespace WpfApp1
         {
             PaymentPage p = new PaymentPage(Collections.currentUser,Collections.currentUser.CartTotalPrice);
             p.Show();
-            this.Close();
+            //this.Close();
+        }
+
+        private void Charge_your_wallet_Click(object sender, RoutedEventArgs e)
+        {
+            Charge_Wallet ChW = new Charge_Wallet(Collections.currentUser);
+            ChW.Show();
+        }
+
+        private void BuyVIP_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentPage P = new PaymentPage(Collections.currentUser, Collections.vip.PricePerMonth);
+            P.Show();
         }
     }
 }

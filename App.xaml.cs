@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
-using Windows.Storage;
+//using Windows.Storage;
 using System;
 
 
@@ -37,7 +37,7 @@ namespace WpfApp1
 
         //pdf file
         //preview pdf file
-        public Book(string n, string a, float p, string pub, string s, string CoverPictureType)
+        public Book(string n, string a, float p, string pub, string s, string CoverPictureType, string PDFName)
         {
             name = n;
             author = a;
@@ -50,6 +50,8 @@ namespace WpfApp1
             sellingCount = 0;
             sellingOutcome = 0;
             this.CoverAddress = "\\" + name + "." + CoverPictureType;  //CoverAddress;
+            string filename = PDFName + ".PDF";
+            this.PDFAddress = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 24) + filename;
         }
     }
     public class User
@@ -60,6 +62,7 @@ namespace WpfApp1
         public string email;
         string password;
         float wallet;
+        public float Wallet { get; set; }
         public float CartTotalPrice { set; get; }
         public  ObservableCollection<Book> books;
         public  ObservableCollection <Book> favorites;
@@ -155,6 +158,7 @@ namespace WpfApp1
     public class VIP
     {
         float pricePerMounth;
+        public float PricePerMonth { get; set; }
          ObservableCollection<Book> books;
     }
     
