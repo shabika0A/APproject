@@ -11,6 +11,7 @@
         <ImageBrush ImageSource="/back.jpg"/>
     </Window.Background>
     <Grid>
+        <!-- -->
         <TabControl x:Name="TabCont" TabStripPlacement="Top" Background="#FF00192E" BorderBrush="#FF00192E" Foreground="#FF00192E" SelectionChanged="TabControl_SelectionChanged" RenderTransformOrigin="0.7,0.576"  >
             <TabItem x:Name="Home"  Header="Home" Initialized="Home_Initialized" Foreground="#FF050507" BorderBrush="#FF97E2DB" Background="#FF97E2DB" >
                 <Grid>
@@ -69,8 +70,7 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
 
-                    <Button x:Name="Add_Book_btn" Grid.Row="5" Content="Add Book" Margin="153,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Height="48" Width="250" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e"/>
-                    <Button x:Name="Cancel_btn" Grid.Row="5" Content="Cancel" Margin="26,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Height="48" Width="250" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Grid.Column="1"/>
+                    <Button x:Name="Add_Book_btn" Grid.Row="5" Content="Add Book" Margin="438,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Height="48" Width="250" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="Add_Book_btn_Click" Grid.ColumnSpan="2"/>
 
                     <TextBlock Name="Name_Of_the_Book_Title" Height="30" Width="125" Text="Book's name:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0"/>
                     <TextBox Name="NameOfTheBook" Grid.Row="0" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
@@ -78,8 +78,8 @@
                     <TextBlock Name="Author_Of_the_Book_Title" Height="30" Width="135" Text="Book's author:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="1"/>
                     <TextBox Name="AuthorOfTheBook" Grid.Row="1" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
 
-                    <TextBlock Name="Publication_Year_Title" Height="30" Width="160" Text="Publication Year:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="2"/>
-                    <TextBox Name="PublicationYear" Grid.Row="2" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
+                    <TextBlock Name="Publication_Title" Height="30" Width="101" Text="publisher:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="2"/>
+                    <TextBox Name="Publication" Grid.Row="2" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
 
                     <TextBlock Name="About_the_Book_Title" Height="30" Width="160" Text="About the book:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="3"/>
                     <TextBox Name="AboutTheBook" Grid.Row="3" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
@@ -96,7 +96,7 @@
                     <TextBox Name="BookPDF" Margin="34,30,168,15" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Grid.Row="2" Grid.Column="1" />
                     <TextBlock Name="Upload_Book_PDF_Title_Dot" Height="40" Width="100" Text=".PDF"  VerticalAlignment="Top"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="30" FontWeight="Bold" FontFamily="Cambria" Margin="263,22,0,0" Grid.Row="2" Grid.Column="1"/>
 
-                    <ToggleButton x:Name="IsManager"  Opacity="0.69"  Grid.Row="3" Grid.Column="1" Checked="IsManager_Checked" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="81,91,0,0"/>
+                    <ToggleButton x:Name="IsVIP"  Opacity="0.69"  Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="81,91,0,0" Checked="IsVIP_Checked"/>
                     <TextBlock Name="ToggleMassage" Height="40" Width="45"  Text="VIP"  FontStyle="Normal"  Foreground="#FF00192E" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" Grid.Row="3" Grid.Column="1" Margin="120,76,0,0"/>
                 </Grid>
             </TabItem>
@@ -224,11 +224,6 @@
                     </Image>
                     <TextBlock x:Name="showName"  HorizontalAlignment="Left" Height="20" Margin="8,125,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="#FF97E2DB" />
                     <TextBlock x:Name="showLastName"  HorizontalAlignment="Left" Height="20" Margin="8,150,0,0" Text="{Binding currentUser.lastName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="#FF97E2DB" />
-                    <Image x:Name="isVIP" HorizontalAlignment="Left" Height="37" Margin="76,83,0,0" VerticalAlignment="Top" Width="36" Source="/vip.jpg" RenderTransformOrigin="0.135,0.325">
-                        <Image.Clip>
-                            <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17" />
-                        </Image.Clip>
-                    </Image>
                     <Label Content="First Name:" HorizontalAlignment="Left" Height="22" Margin="350,70,0,0" VerticalAlignment="Top" Width="74"/>
                     <Label Content="Last Name:" HorizontalAlignment="Left" Height="21" Margin="353,118,0,0" VerticalAlignment="Top" Width="74"/>
                     <Label Content="Phone Number:" HorizontalAlignment="Left" Height="21" Margin="330,165,0,0" VerticalAlignment="Top" Width="94"/>

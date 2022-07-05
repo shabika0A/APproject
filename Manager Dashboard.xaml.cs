@@ -44,7 +44,8 @@ namespace WpfApp1
 
         private void Edit_Book_Click(object sender, RoutedEventArgs e)
         {
-            
+            Edit_Book E = new Edit_Book((Book)(sender as FrameworkElement).DataContext);
+            E.Show();
         }
 
         private void Delete_Book_Click(object sender, RoutedEventArgs e)
@@ -239,6 +240,7 @@ namespace WpfApp1
                     break;
                 }
             }
+
         }
 
         private void Withdraw_btn_Click(object sender, RoutedEventArgs e)
@@ -318,6 +320,37 @@ namespace WpfApp1
                 //Anything to do related to bank
                 MessageBox.Show("Money was withdrawn successfully!");
 
+            }
+        }
+
+        private void Add_Book_btn_Click(object sender, RoutedEventArgs e)
+        {
+            bool ThereIsAProblem = false;
+            int[] ASCIIPrice = new int[Price.Text.Length];
+            for (int i = 0; i < ASCIIPrice.Length; i++)
+            {
+                ASCIIPrice[i] = (int)Price.Text.ToCharArray()[i];
+            }
+            foreach (int i in ASCIIPrice)
+            {
+                if (i < 48 || i > 57)
+                {
+                    MessageBox.Show("Price can only include numbers!");
+                    ThereIsAProblem = true;
+                    break;
+                }
+            }
+            if (ThereIsAProblem == false)
+            {
+                try
+                {
+                    Book NewBook = new Book(NameOfTheBook.Text, AuthorOfTheBook.Text, float.Parse(Price.Text), Publication.Text, AboutTheBook.Text, BookCover.Text, BookCoverFileType.Text, BookPDF.Text, (bool)IsVIP.IsChecked);
+                    Collections.books.Add(NewBook);
+                }
+                catch
+                {
+                    MessageBox.Show("There is a problem! Book was not added!");
+                }
             }
         }
     }

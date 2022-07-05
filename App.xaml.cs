@@ -29,16 +29,20 @@ namespace WpfApp1
         //book cover picture
         public DateTime discountDeadline { set; get; }
         //book cover picture
+        public string PDFName { get; set; }
         public string PDFAddress { get; set; }
+        public string CoverPictureName { get; set; }
+        public string CoverPictureType { get; set; }
         public string CoverAddress { get; set; }
         public float? rate { set; get; }
         public int? rateCount { set; get; }
         public int sellingCount { set; get; }
         public float sellingOutcome { set; get; }
+        public bool IsVIP { get; set; }
 
         //pdf file
         //preview pdf file
-        public Book(string n, string a, float p, string pub, string s, string CoverPictureType, string PDFName)
+        public Book(string n, string a, float p, string pub, string s, string CoverPictureName, string CoverPictureType, string PDFName, bool IsVIP = false)
         {
             name = n;
             author = a;
@@ -51,10 +55,13 @@ namespace WpfApp1
             rateCount = 0;
             sellingCount = 0;
             sellingOutcome = 0;
-            this.CoverAddress = "\\" + name + "." + CoverPictureType;  //CoverAddress;
-            string filename = PDFName + ".PDF";
+            this.CoverPictureName = CoverPictureName;
+            this.CoverPictureType = CoverPictureType;
+            this.CoverAddress = "\\" + this.CoverPictureName + "." + this.CoverPictureType;  //CoverAddress;
+            this.PDFName = PDFName;
+            string filename = this.PDFName + ".PDF";
             this.PDFAddress = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 24) + filename;
-
+            this.IsVIP = IsVIP;
         }
     }
     public class User

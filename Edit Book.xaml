@@ -1,0 +1,72 @@
+﻿<Window x:Class="WpfApp1.Edit_Book"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Edit_Book" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="/back.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="322*"/>
+                <ColumnDefinition Width="211*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="60"></RowDefinition>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Name="Title" Height="30" Width="60" Text="Edit"  VerticalAlignment="Top"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="30" FontWeight="Bold" FontFamily="Cambria" Margin="24,10,0,0"/>
+            <TextBlock Name="Title2" Height="40" Width="690" Text="{Binding name}"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="30" FontWeight="Bold" FontFamily="Cambria" Margin="89,0,0,0" Grid.ColumnSpan="2"/>
+
+            <Button x:Name="Edit_Book_btn" Grid.Row="6" Content="Edit Book" VerticalAlignment="Center" HorizontalAlignment="Center" Height="48" Width="202" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="Edit_Book_btn_Click"/>
+            <Button x:Name="Cancel_btn" Grid.Row="6" Content="Cancel" VerticalAlignment="Center" HorizontalAlignment="Left" Height="48" Width="202" Background="#FF44E6C1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="Cancel_btn_Click" Margin="483,0,0,0" Grid.ColumnSpan="2"/>
+
+            <TextBlock Name="Name_Of_the_Book_Title" Height="30" Width="125" Text="Book's name:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="1"/>
+            <TextBox Name="NameOfTheBook" Text="{Binding name}" Grid.Row="1" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
+
+            <TextBlock Name="Author_Of_the_Book_Title" Height="30" Width="135" Text="Book's author:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="2"/>
+            <TextBox Name="AuthorOfTheBook" Text="{Binding author}" Grid.Row="2" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
+
+            <TextBlock Name="Publication_Title" Height="30" Width="101" Text="publisher:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="3"/>
+            <TextBox Name="Publication" Text="{Binding publisher}" Grid.Row="3" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
+
+            <TextBlock Name="About_the_Book_Title" Height="30" Width="160" Text="About the book:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="4"/>
+            <TextBox Name="AboutTheBook" Text="{Binding summery}" Grid.Row="4" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
+
+            <TextBlock Name="Price_Title" Height="30" Width="160" Text="Price:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="5"/>
+            <TextBox Name="Price" Text="{Binding price}" Grid.Row="5" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
+
+            <TextBlock Name="Upload_Book_Cover_Title" Height="30" Width="220" Text="Book's cover file name:"  VerticalAlignment="Top"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="1" Grid.Column="1"/>
+            <TextBox Name="BookCover" Text="{Binding CoverPictureName}" Margin="34,30,168,15" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Grid.Row="1" Grid.Column="1" />
+            <TextBlock Name="Upload_Book_Cover_Title_Dot" Height="40" Width="10" Text="."  VerticalAlignment="Top"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="40" FontWeight="Bold" FontFamily="Cambria" Margin="159,7,0,0" Grid.Row="1" Grid.Column="1"/>
+            <TextBox Name="BookCoverFileType" Text="{Binding CoverPictureType}" Margin="174,30,97,15" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Grid.Row="1" Grid.Column="1" RenderTransformOrigin="0.5,0.5"  >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+
+            <TextBlock Name="Upload_Book_PDF_Title" Height="30" Width="220" Text="Book's PDF file name:"  VerticalAlignment="Top"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="2" Grid.Column="1"/>
+            <TextBox Name="BookPDF" Text="{Binding PDFName}" Margin="34,37,168,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Grid.Row="2" Grid.Column="1" />
+            <TextBlock Name="Upload_Book_PDF_Title_Dot" Height="27" Width="100" Text=".PDF"  VerticalAlignment="Top"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="159,30,0,0" Grid.Row="2" Grid.Column="1"/>
+
+            <ToggleButton x:Name="IsVIP"  Opacity="0.69"  Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="120,31,0,0" Checked="IsVIP_Checked" Height="19"/>
+            <TextBlock Name="ToggleMassage" Height="41" Width="45"  Text="VIP"  FontStyle="Normal"  Foreground="#FF00192E" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" Grid.Row="4" Grid.Column="1" Margin="159,15,0,0"/>
+        </Grid>
+    </Grid>
+</Window>
