@@ -129,30 +129,15 @@
                                             <Label Content="price:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding price}" Margin="0,0"></TextBlock>
                                         </StackPanel>
-<<<<<<< HEAD
-=======
-                                        <!--<TextBlock Text="{Binding sellingCount}" Margin="55,0,0,0"></TextBlock>-->
->>>>>>> 1acfc9399bb0a735841e52d11d74eabce50c3c78
+
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="Numbers sold:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding sellingCount}" Margin="0,0"></TextBlock>
                                         </StackPanel>
-<<<<<<< HEAD
-
-
-=======
-                                        <!--<TextBlock Text="{Binding sellingOutcome}" Margin="55,0,0,0"></TextBlock>-->
->>>>>>> 1acfc9399bb0a735841e52d11d74eabce50c3c78
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="Selling Outcome:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding sellingOutcome}" Margin="0,0"></TextBlock>
                                         </StackPanel>
-<<<<<<< HEAD
-
-
-=======
-                                        <!--<TextBlock Text="{Binding rate}" Margin="55,0,0,0"></TextBlock>-->
->>>>>>> 1acfc9399bb0a735841e52d11d74eabce50c3c78
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="Rate:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding rate}" Margin="0,0"></TextBlock>
@@ -163,23 +148,14 @@
                                                     <ImageBrush x:Name="editIcon" ImageSource="/EditIcon.png" Stretch="Fill"/>
                                                 </Button.Background>
                                             </Button>
-<<<<<<< HEAD
+
                                             <Button x:Name="Delete_Book"  Margin="10,0,0,0" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="30" Click="Delete_Book_Click">
                                                 <Button.Background>
                                                     <ImageBrush x:Name="deleteIcon" ImageSource="/DeleteIcon.png" Stretch="Fill"/>
                                                 </Button.Background>
                                             </Button>
                                             <Button x:Name="Add_Discount" Content="Add Discount" FontSize="12" Margin="10,0,0,0" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="110" Background="#FFFFC857" Foreground="#FF2C1E13" Click="Add_Discount_Click"/>
-=======
-                                            <Button x:Name="Add_Discount" Content="Add Discount" Margin="20,0,0,0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Center" Width="100" Background="#FFFFC857" FontSize="12" Foreground="#FF2C1E13" Click="Add_Discount_Click"/>
-                                        </StackPanel>
-                                        <StackPanel>
-                                            <Button x:Name="Delete_Book"  Margin="5,0,0,0" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center" Width="70" Click="Delete_Book_Click" BorderBrush="#00FFFFFF">
-                                                <Button.Background>
-                                                    <ImageBrush ImageSource="/DeleteIcon.png"/>
-                                                </Button.Background>
-                                            </Button>
->>>>>>> 1acfc9399bb0a735841e52d11d74eabce50c3c78
+
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>

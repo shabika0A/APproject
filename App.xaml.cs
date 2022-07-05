@@ -123,21 +123,13 @@ namespace WpfApp1
     }
     public class Manager
     {
-<<<<<<< HEAD
         public string name { set; get; }
         public string lastName { set; get; }
         public string phoneNumber { set; get; }
         public string email { set; get; }
         string password { set; get; }
         public static ObservableCollection<string> emailsList = new ObservableCollection<string>();
-=======
-        string name;
-        string lastName;
-        string phoneNumber;
-        public string email;
-        public static  ObservableCollection<string> emailsList = new  ObservableCollection<string>();
-        string password;
->>>>>>> 1acfc9399bb0a735841e52d11d74eabce50c3c78
+
         public float TotalCash { get; set; }
         public Manager(string n, string ln, string pn, string e, string p)
         {
