@@ -28,8 +28,8 @@ namespace WpfApp1
         public MainWindow()
         {
 
-            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "jpg", "Little+Prince sample"));
-            Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "jpg", "Great Expectations sample"));
+            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "TheLittlePrince", "jpg", "Little+Prince sample"));
+            Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "GreatExpectations", "jpg", "Great Expectations sample"));
             Collections.users.Add(new User("shakiba", "anaraki", "09123456789", "a@b.com", "something"));
             //Collections.currentUser.isVIP = true;
             Collections.users[0].books.Add(Collections.books[0]);
