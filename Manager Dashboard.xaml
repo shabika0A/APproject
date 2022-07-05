@@ -271,10 +271,10 @@
                     <TextBox Name="AmountOfMoneyToWithdraw" Grid.Row="1" Margin="336,10,90,10" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Width="500" Height="50"/>
 
                     <TextBlock Name="Card_Number_Title" Height="30" Width="135" Text="Card Number:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="2"/>
-                    <TextBox Name="CardNumber1" Grid.Row="2" Margin="406,24,560,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10" Width="100" Height="50"/>
-                    <TextBox Name="CardNumber2" Grid.Row="2" Margin="533,24,433,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10" Width="100" Height="50"/>
-                    <TextBox Name="CardNumber3" Grid.Row="2" Margin="675,24,291,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10" Width="100" Height="50"/>
-                    <TextBox Name="CardNumber4" Grid.Row="2" Margin="806,24,160,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="10" Width="100" Height="50"/>
+                    <TextBox Name="CardNumber1" Grid.Row="2" Margin="406,24,560,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Width="100" Height="50"/>
+                    <TextBox Name="CardNumber2" Grid.Row="2" Margin="533,24,433,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Width="100" Height="50"/>
+                    <TextBox Name="CardNumber3" Grid.Row="2" Margin="675,24,291,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Width="100" Height="50"/>
+                    <TextBox Name="CardNumber4" Grid.Row="2" Margin="806,24,160,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Width="100" Height="50"/>
 
                     <TextBlock Name="Manager_Password_Title" Height="30" Width="187" Text="Manager Password:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="3"/>
                     <TextBox Name="ManagerPassword" Grid.Row="3" Margin="406,24,160,24" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Width="500" Height="50"/>

@@ -43,7 +43,7 @@ namespace WpfApp1
 
         private void read_sample_Click(object sender, RoutedEventArgs e)
         {
-            PDF p = new PDF(ThisBook);
+            PDF p = new PDF(ThisBook, true);
             p.Show();
             this.Close();
         }

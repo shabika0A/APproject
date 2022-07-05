@@ -56,8 +56,10 @@ namespace WpfApp1
         private void book_cover_Click(object sender, RoutedEventArgs e)
         {
             Book bb = (Book)(sender as FrameworkElement).DataContext;
-            a_book bWindow = new a_book(bb);
-            bWindow.Show();
+            //a_book bWindow = new a_book(bb);
+            //bWindow.Show();
+            PDF P = new PDF(bb, false);
+            P.Show();
             this.Close();
         }
 
@@ -65,8 +67,6 @@ namespace WpfApp1
         {
             addDiscount a = new addDiscount((Book)(sender as FrameworkElement).DataContext);
             a.Show();
-
-
         }
 
         private void Manager_Search_button_Click(object sender, RoutedEventArgs e)
@@ -140,8 +140,8 @@ namespace WpfApp1
             }
             if (Cash.IsSelected)
             {
-                DataContext = Collections.currentManager;
-                TotalCash.Text = Collections.currentManager.TotalCash.ToString();
+                DataContext = Collections.TotalCash;
+                TotalCash.Text = Collections.TotalCash.ToString();
             }
         }
 
@@ -277,8 +277,62 @@ namespace WpfApp1
                     break;
                 }
             }
+            if (!ThereIsAProblem) //
+            {
+                if (float.Parse(AmountOfMoneyToWithdraw.Text) < Collections.TotalCash)
+                {
+                    MessageBox.Show("You cannot withdraw more money than the total!");
+                }
+                else if (float.Parse(AmountOfMoneyToWithdraw.Text) < 0)
+                {
+                    MessageBox.Show("Please enter a positive number to withdraw!");
+                }
+            }
 
 
+            //int[] ASCIICardNumber1 = new int[CardNumber1.Text.Length];
+            //int[] ASCIICardNumber2 = new int[CardNumber2.Text.Length];
+            //int[] ASCIICardNumber3 = new int[CardNumber3.Text.Length];
+            //int[] ASCIICardNumber4 = new int[CardNumber4.Text.Length];
+            //for (int i = 0; i < ASCIICardNumber1.Length; i++)
+            //{
+            //    ASCIICardNumber1[i] = (int)CardNumber1.Text.ToCharArray()[i];
+            //}
+            //for (int i = 0; i < ASCIICardNumber2.Length; i++)
+            //{
+            //    ASCIICardNumber2[i] = (int)CardNumber2.Text.ToCharArray()[i];
+            //}
+            //for (int i = 0; i < ASCIICardNumber3.Length; i++)
+            //{
+            //    ASCIICardNumber3[i] = (int)CardNumber3.Text.ToCharArray()[i];
+            //}
+            //for (int i = 0; i < ASCIICardNumber4.Length; i++)
+            //{
+            //    ASCIICardNumber4[i] = (int)CardNumber4.Text.ToCharArray()[i];
+            //}
+            //if (CardNumber1.Text.Length != 4 || CardNumber2.Text.Length != 4 || CardNumber3.Text.Length != 4 || CardNumber4.Text.Length != 4)
+            //{
+            //    MessageBox.Show("Each part of the card number's length is 4!");
+            //    ThereIsAProblem = true;
+            //}
+            //bool NotNumberErrorShown = false;
+            //foreach (int i in ASCIICardNumber1)
+            //{
+            //    if (i < 48 || i > 57)
+            //    {
+            //        if (NotNumberErrorShown == false)
+            //        {
+            //            MessageBox.Show("Each part of the card number includes 4 numbers!");
+            //            ThereIsAProblem = true;
+            //            NotNumberErrorShown = true;
+            //        }
+            //        break;
+            //    }
+            //}
+
+            //bool ThereIsAProblem = false;
+            bool CardNumberHasCorrectFormat = true;
+            string CardNumber;
             int[] ASCIICardNumber1 = new int[CardNumber1.Text.Length];
             int[] ASCIICardNumber2 = new int[CardNumber2.Text.Length];
             int[] ASCIICardNumber3 = new int[CardNumber3.Text.Length];
@@ -302,6 +356,7 @@ namespace WpfApp1
             if (CardNumber1.Text.Length != 4 || CardNumber2.Text.Length != 4 || CardNumber3.Text.Length != 4 || CardNumber4.Text.Length != 4)
             {
                 MessageBox.Show("Each part of the card number's length is 4!");
+                CardNumberHasCorrectFormat = false;
                 ThereIsAProblem = true;
             }
             bool NotNumberErrorShown = false;
@@ -312,10 +367,92 @@ namespace WpfApp1
                     if (NotNumberErrorShown == false)
                     {
                         MessageBox.Show("Each part of the card number includes 4 numbers!");
+                        CardNumberHasCorrectFormat = false;
                         ThereIsAProblem = true;
                         NotNumberErrorShown = true;
                     }
                     break;
+                }
+            }
+
+            foreach (int i in ASCIICardNumber2)
+            {
+                if (i < 48 || i > 57)
+                {
+                    if (NotNumberErrorShown == false)
+                    {
+                        MessageBox.Show("Each part of the card number includes 4 numbers!");
+                        CardNumberHasCorrectFormat = false;
+                        ThereIsAProblem = true;
+                        NotNumberErrorShown = true;
+                    }
+                    break;
+                }
+            }
+            foreach (int i in ASCIICardNumber3)
+            {
+                if (i < 48 || i > 57)
+                {
+                    if (NotNumberErrorShown == false)
+                    {
+                        MessageBox.Show("Each part of the card number includes 4 numbers!");
+                        CardNumberHasCorrectFormat = false;
+                        ThereIsAProblem = true;
+                        NotNumberErrorShown = true;
+                    }
+                    break;
+                }
+            }
+            foreach (int i in ASCIICardNumber4)
+            {
+                if (i < 48 || i > 57)
+                {
+                    if (NotNumberErrorShown == false)
+                    {
+                        MessageBox.Show("Each part of the card number includes 4 numbers!");
+                        CardNumberHasCorrectFormat = false;
+                        ThereIsAProblem = true;
+                        NotNumberErrorShown = true;
+                    }
+                    break;
+                }
+            }
+
+            static bool checkLuhn(string cardNumber)
+            {
+                int nDigits = cardNumber.Length;
+                int nSummation = 0;
+
+                bool isSecond = false;
+                for (int i = nDigits - 1; i >= 0; i--)
+                {
+
+                    int b = cardNumber[i] - '0';
+                    if (isSecond == true)
+                    {
+                        b = b * 2;
+                    }
+                    nSummation += b / 10;
+                    nSummation += b % 10;
+                    isSecond = !isSecond;
+                }
+                return (nSummation % 10 == 0);
+            }
+
+            if (CardNumberHasCorrectFormat)
+            {
+                try
+                {
+                    CardNumber = CardNumber1.Text + CardNumber2.Text + CardNumber3.Text + CardNumber4.Text;
+                    if (!checkLuhn(CardNumber))
+                    {
+                        MessageBox.Show("Card number is not valid according to Luhn algorithm!");
+                        ThereIsAProblem = true;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Card number is in a wrong format!");
                 }
             }
 
@@ -327,7 +464,7 @@ namespace WpfApp1
 
             if (!ThereIsAProblem)
             {
-                Collections.currentManager.TotalCash -= float.Parse(AmountOfMoneyToWithdraw.Text);
+                Collections.TotalCash -= float.Parse(AmountOfMoneyToWithdraw.Text);
                 //Anything to do related to bank
                 MessageBox.Show("Money was withdrawn successfully!");
 

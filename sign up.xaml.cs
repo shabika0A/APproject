@@ -120,14 +120,17 @@ namespace WpfApp1
             {
                 Manager u = new Manager(name.Text,lastName.Text,phoneNumber.Text,Email.Text,password.Text);
                 Collections.managers.Add(u);
-                
+                this.Close();
+                MainWindow m = new MainWindow();
+                m.Show();
             }
             else
             {
                 User u = new User(name.Text, lastName.Text, phoneNumber.Text, Email.Text, password.Text);
-
                 Collections.users.Add(u);
-                
+                this.Close();
+                MainWindow m = new MainWindow();
+                m.Show();
             }
         }
     }

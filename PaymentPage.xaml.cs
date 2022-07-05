@@ -18,15 +18,15 @@ namespace WpfApp1
     public partial class PaymentPage : Window
     {
         User ThisUser;
-        float FinalPrice = 0;
-        public PaymentPage(User U,float price)
+        float ThisPrice = 0;
+        public PaymentPage(User U, float price)
         {
             //Price can be cart price or VIP price; This page is used for both payments
             //DataContext = price;////must be changed! after having banking account
             ThisUser = U;
             InitializeComponent();
             priceBox.Text = price.ToString();
-
+            this.ThisPrice = price;
         }
 
         
@@ -34,6 +34,8 @@ namespace WpfApp1
         private void Pay_Click(object sender, RoutedEventArgs e)
         {
             bool ThereIsAProblem = false;
+            bool CardNumberHasCorrectFormat = true;
+            string CardNumber;
             int[] ASCIICardNumber1 = new int[CardNumber1.Text.Length];
             int[] ASCIICardNumber2 = new int[CardNumber2.Text.Length];
             int[] ASCIICardNumber3 = new int[CardNumber3.Text.Length];
@@ -57,6 +59,7 @@ namespace WpfApp1
             if (CardNumber1.Text.Length != 4 || CardNumber2.Text.Length != 4 || CardNumber3.Text.Length != 4 || CardNumber4.Text.Length != 4)
             {
                 MessageBox.Show("Each part of the card number's length is 4!");
+                CardNumberHasCorrectFormat = false;
                 ThereIsAProblem = true;
             }
             bool NotNumberErrorShown = false;
@@ -67,6 +70,7 @@ namespace WpfApp1
                     if (NotNumberErrorShown == false)
                     {
                         MessageBox.Show("Each part of the card number includes 4 numbers!");
+                        CardNumberHasCorrectFormat = false;
                         ThereIsAProblem = true;
                         NotNumberErrorShown = true;
                     }
@@ -81,6 +85,7 @@ namespace WpfApp1
                     if (NotNumberErrorShown == false)
                     {
                         MessageBox.Show("Each part of the card number includes 4 numbers!");
+                        CardNumberHasCorrectFormat = false;
                         ThereIsAProblem = true;
                         NotNumberErrorShown = true;
                     }
@@ -94,6 +99,7 @@ namespace WpfApp1
                     if (NotNumberErrorShown == false)
                     {
                         MessageBox.Show("Each part of the card number includes 4 numbers!");
+                        CardNumberHasCorrectFormat = false;
                         ThereIsAProblem = true;
                         NotNumberErrorShown = true;
                     }
@@ -107,6 +113,7 @@ namespace WpfApp1
                     if (NotNumberErrorShown == false)
                     {
                         MessageBox.Show("Each part of the card number includes 4 numbers!");
+                        CardNumberHasCorrectFormat = false;
                         ThereIsAProblem = true;
                         NotNumberErrorShown = true;
                     }
@@ -114,22 +121,59 @@ namespace WpfApp1
                 }
             }
 
+            static bool checkLuhn(string cardNumber)
+            {
+                int nDigits = cardNumber.Length;
+                int nSummation = 0;
+
+                bool isSecond = false;
+                for (int i = nDigits - 1; i >= 0; i--)
+                {
+
+                    int b = cardNumber[i] - '0';
+                    if (isSecond == true)
+                    {
+                        b = b * 2;
+                    }
+                    nSummation += b / 10;
+                    nSummation += b % 10;
+                    isSecond = !isSecond;
+                }
+                return (nSummation % 10 == 0);
+            }
+
+            if (CardNumberHasCorrectFormat)
+            {
+                try
+                {
+                    CardNumber = CardNumber1.Text + CardNumber2.Text + CardNumber3.Text + CardNumber4.Text;
+                    if (!checkLuhn(CardNumber))
+                    {
+                        MessageBox.Show("Card number is not valid according to Luhn algorithm!");
+                        ThereIsAProblem = true;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Card number is in a wrong format!");
+                }
+            }
 
             int[] ASCIICVV2 = new int[CVV2.Text.Length];
             for (int i = 0; i < ASCIICVV2.Length; i++)
             {
                 ASCIICVV2[i] = (int)CVV2.Text.ToCharArray()[i];
             }
-            if (CVV2.Text.Length != 3)
+            if (CVV2.Text.Length != 3 && CVV2.Text.Length != 4)
             {
-                MessageBox.Show("CVV2 length must be 3!");
+                MessageBox.Show("CVV2 length must be 3 or 4!");
                 ThereIsAProblem = true;
             }
             foreach (int i in ASCIICVV2)
             {
                 if (i < 48 || i > 57)
                 {
-                    MessageBox.Show("CVV2 must be 3 numbers!");
+                    MessageBox.Show("CVV2 must be 3 or 4 numbers!");
                     ThereIsAProblem = true;
                     break;
                 }
@@ -223,6 +267,8 @@ namespace WpfApp1
             {
                 //Check card info -> if OK...
                 MessageBox.Show("Paid Successfully!");
+                Methods.AddBooksToUserFromCart(ThisUser);
+                Collections.TotalCash += ThisPrice;
                 //add books to user's books list
                 this.Close();
             }

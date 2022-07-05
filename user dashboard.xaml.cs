@@ -55,19 +55,31 @@ namespace WpfApp1
             {
                 MessageBox.Show("you already have this book =)");
             }
+            else if (Collections.currentUser.cart.Contains(bb))
+            {
+                MessageBox.Show("you already have this book in your cart =)");
+            }
             else
             {
-            Collections.currentUser.cart.Add(bb);
-            MessageBox.Show("book was added to cart successfully.");
-            }
-                
+                Collections.currentUser.cart.Add(bb);
+                MessageBox.Show("book was added to cart successfully.");
+            }         
         }
 
         private void book_cover_Click(object sender, RoutedEventArgs e)
         {
             Book bb = (Book)(sender as FrameworkElement).DataContext;
-            a_book bWindow = new a_book(bb);
-            bWindow.Show();
+            if (Collections.currentUser.books.Contains(bb))
+            {
+                PDF P = new PDF(bb, false);
+                P.Show();
+            }
+            else
+            {
+                a_book bWindow = new a_book(bb);
+                bWindow.Show();
+            }
+            //Book bb = (Book)(sender as FrameworkElement).DataContext;
             this.Close();
         }
 
@@ -251,6 +263,20 @@ namespace WpfApp1
             else
             {
                 Collections.currentUser.changePassword(NPass.Text);
+            }
+        }
+
+        private void pay_by_wallet_Click(object sender, RoutedEventArgs e)
+        {
+            if (Collections.currentUser.Wallet >= Methods.calculateTotalPriceOfCart(Collections.currentUser))
+            {
+                Collections.currentUser.Wallet -= Methods.calculateTotalPriceOfCart(Collections.currentUser);
+                Methods.AddBooksToUserFromCart(Collections.currentUser);
+                Collections.TotalCash += Methods.calculateTotalPriceOfCart(Collections.currentUser);
+            }
+            else
+            {
+                MessageBox.Show("You do not have enough money in your wallet!");
             }
         }
     }

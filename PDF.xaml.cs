@@ -21,7 +21,8 @@ namespace WpfApp1
     public partial class PDF : Window
     {
         public Book HereBook;
-        public PDF(Book ThisBook)
+        bool IsPreview;
+        public PDF(Book ThisBook, bool IsPreview)
         {
             InitializeComponent();
             //HereBook = ThisBook;
@@ -30,6 +31,9 @@ namespace WpfApp1
             ////string filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length-24) + filename;
             ////pdfWebViewer.Navigate(filePath);
             //pdfWebViewer.Navigate(ThisBook.PDFAddress);
+            HereBook = ThisBook;
+            this.IsPreview = IsPreview;
+            /*
             string sFilename = ThisBook.PDFAddress;
             PdfReader pdf_Reader = new PdfReader(sFilename);
             string sText = "";
@@ -43,14 +47,65 @@ namespace WpfApp1
                 sText += PdfTextExtractor.GetTextFromPage(pdf_Reader, i);
             }
             lblPDF_Output.Text = sText;
-            HereBook = ThisBook;
+            */
+            if (IsPreview)
+            {
+                string sFilename = ThisBook.PDFAddress;
+                PdfReader pdf_Reader = new PdfReader(sFilename);
+                string sText = "";
+                //ScrollV.Height = pdf_Reader.NumberOfPages * 50;
+                //lblPDF_Output.Height = pdf_Reader.NumberOfPages * 100;
+                //var LineCount = File.ReadLines(ThisBook.PDFAddress).Count();
+                int LineCount = File.ReadAllLines(ThisBook.PDFAddress).Length;
+                lblPDF_Output.Height = LineCount * 0.3;
+                for (int i = 1; i <= pdf_Reader.NumberOfPages; i++)
+                {
+                    sText += PdfTextExtractor.GetTextFromPage(pdf_Reader, i);
+                }
+                lblPDF_Output.Text = sText;
+            }
+            else
+            {
+                string sFilename = ThisBook.PDFAddress;
+                PdfReader pdf_Reader = new PdfReader(sFilename);
+                string sText = "";
+                //ScrollV.Height = pdf_Reader.NumberOfPages * 50;
+                //lblPDF_Output.Height = pdf_Reader.NumberOfPages * 100;
+                //var LineCount = File.ReadLines(ThisBook.PDFAddress).Count();
+                int LineCount = File.ReadAllLines(ThisBook.PDFAddress).Length;
+                lblPDF_Output.Height = LineCount * 0.6;
+                for (int i = 1; i <= pdf_Reader.NumberOfPages; i++)
+                {
+                    sText += PdfTextExtractor.GetTextFromPage(pdf_Reader, i);
+                }
+                lblPDF_Output.Text = sText;
+            }
+
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            Book bb = HereBook;
-            a_book bWindow = new a_book(bb);
-            bWindow.Show();
+            if (IsPreview)
+            {
+                Book bb = HereBook;
+                a_book bWindow = new a_book(bb);
+                bWindow.Show();
+            }
+            else
+            {
+                if (Collections.managerSignedIn)
+                {
+                    Manager_Dashboard m = new Manager_Dashboard();
+                    m.Show();
+                    this.Close();
+                }
+                else
+                {
+                    user_dashboard m = new user_dashboard();
+                    m.Show();
+                    this.Close();
+                }
+            }
             this.Close();
         }
     }

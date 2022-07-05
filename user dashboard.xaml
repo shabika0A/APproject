@@ -137,7 +137,7 @@
                         </ItemsControl>
                     </ScrollViewer>
                     <Button x:Name="pay_online" Content="pay online" HorizontalAlignment="Left" Height="28" Margin="336,455,0,0" VerticalAlignment="Top" Width="121" Click="pay_online_Click" Foreground="#FFFFC857" Grid.Column="1"/>
-                    <Button x:Name="pay_by_wallet" Content="pay by wallet" HorizontalAlignment="Left" Height="28" Margin="117,455,0,0" VerticalAlignment="Top" Width="121" Click="pay_online_Click" Foreground="#FFFFC857" Grid.Column="1"/>
+                    <Button x:Name="pay_by_wallet" Content="pay by wallet" HorizontalAlignment="Left" Height="28" Margin="117,455,0,0" VerticalAlignment="Top" Width="121" Foreground="#FFFFC857" Grid.Column="1" Click="pay_by_wallet_Click"/>
                     <TextBlock HorizontalAlignment="Left" FontSize="20" Height="28" Margin="317,455,0,0" Text="total price:" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
                     <TextBlock x:Name="priceBox" FontSize="20" HorizontalAlignment="Left" Text="{Binding CartTotalPrice}" Height="24" Margin="425,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Foreground="#FF00192E"/>
                 </Grid>

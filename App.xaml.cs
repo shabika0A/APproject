@@ -25,7 +25,8 @@ namespace WpfApp1
         public string publisher { set; get; }
         public string summery { set; get; }
         public float discount { set; get; }
-        public int discountDuration { set; get; }
+        public DateTime discountDeadline { get; set; }
+        //public int discountDuration { set; get; }
         //book cover picture
         public string PDFName { get; set; }
         public string PDFAddress { get; set; }
@@ -37,7 +38,7 @@ namespace WpfApp1
         public int sellingCount { set; get; }
         public float sellingOutcome { set; get; }
         public bool IsVIP { get; set; }
-        public DateTime discountDeadline { get; set; }
+        
 
         //pdf file
         //preview pdf file
@@ -49,7 +50,7 @@ namespace WpfApp1
             publisher = pub;
             summery = s;
             discount = 0;
-            discountDuration = 0;
+            //discountDuration = 0;
             rate = 0;
             rateCount = 0;
             sellingCount = 0;
@@ -130,7 +131,7 @@ namespace WpfApp1
         string password { set; get; }
         public static ObservableCollection<string> emailsList = new ObservableCollection<string>();
 
-        public float TotalCash { get; set; }
+        //public float TotalCash { get; set; }
         public Manager(string n, string ln, string pn, string e, string p)
         {
             name = n;
@@ -138,7 +139,7 @@ namespace WpfApp1
             phoneNumber = pn;
             email = e;
             password = p;
-            TotalCash = 0;
+            //TotalCash = 0;
             emailsList.Add(e);
         }
         public bool checkPassword(string p)
@@ -193,6 +194,7 @@ namespace WpfApp1
         }
         public static User currentUser;
         public static Manager currentManager;
+        public static float TotalCash;
 
     }
 
@@ -215,6 +217,43 @@ namespace WpfApp1
                 }
             }
             return FinalPrice;
+        }
+
+        //public float TotalCashSum ()
+        //{
+        //    float sum = 0;
+        //    foreach (Manager m in Collections.managers)
+        //    {
+        //        sum += m.TotalCash;
+        //    }
+        //    return sum;
+        //}
+        
+        public static void AddBooksToUserFromCart (User u)
+        {
+            foreach (Book b in u.cart)
+            {
+                u.books.Add(b);
+                b.sellingCount++;
+                float BookPrice = 0;
+                DateTime ThisTime = DateTime.Now;
+                if (DateTime.Compare(ThisTime, b.discountDeadline) <= 0)
+                {
+                    BookPrice = (b.price * b.discount);
+                }
+                else
+                {
+                    BookPrice = b.price;
+                }
+                b.sellingOutcome += BookPrice;
+                //u.cart.Remove(b);
+            }
+            //Collections.currentUser.cart.Remove((Book)(sender as FrameworkElement).DataContext);
+            //Collections.currentUser.CartTotalPrice = Methods.calculateTotalPriceOfCart(Collections.currentUser);
+            //foreach (Book b in u.cart)
+            //{
+            //    u.cart.Remove(b);
+            //}
         }
         public bool checkCVV(string p)
         {
