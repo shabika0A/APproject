@@ -209,7 +209,7 @@ namespace WpfApp1
                 DateTime ThisTime = DateTime.Now;
                 if (DateTime.Compare(ThisTime, b.discountDeadline) <= 0)
                 {
-                    FinalPrice += (b.price * b.discount);
+                    FinalPrice += (b.price * (1 - b.discount));
                 }
                 else
                 {
@@ -239,7 +239,7 @@ namespace WpfApp1
                 DateTime ThisTime = DateTime.Now;
                 if (DateTime.Compare(ThisTime, b.discountDeadline) <= 0)
                 {
-                    BookPrice = (b.price * b.discount);
+                    BookPrice = (b.price * (1 - b.discount));
                 }
                 else
                 {
