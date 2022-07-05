@@ -37,8 +37,6 @@ namespace WpfApp1
             
         }
 
-        
-
         private void sign_in1_Click(object sender, RoutedEventArgs e)
         {
             if (isManagerBool)
@@ -81,18 +79,11 @@ namespace WpfApp1
             }
             if (signedIn)
             {
-                ///close and show next window
-                if (isManagerBool)
-                {
-                    Manager_Dashboard MD = new Manager_Dashboard();
-                    MD.Show();
-                }
-                else
-                {
-                    user_dashboard UD = new user_dashboard();
-                    UD.Show();
-                }
+                
+                user_dashboard u = new user_dashboard();
+                u.Show();
                 this.Close();
+                ///also open for manager
             }
         }
     }
