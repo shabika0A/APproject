@@ -28,7 +28,7 @@ namespace WpfApp1
         public MainWindow()
         {
 
-            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "TheLittlePrince", "jpg", "Little+Prince sample"));
+            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary\nNext Line", "TheLittlePrince", "jpg", "Little+Prince sample"));
             Collections.books.Add(new Book("Great Expectations", "me", 10, "ofogh", "two diary", "GreatExpectations", "jpg", "Great Expectations sample"));
             Collections.currentUser = new User("shakiba", "anaraki", "09123456789", "a@b.com", "something");
             Collections.currentUser.isVIP = true;

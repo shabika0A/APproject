@@ -81,7 +81,7 @@
                     <TextBlock Name="Publication_Title" Height="30" Width="101" Text="publisher:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="2"/>
                     <TextBox Name="Publication" Grid.Row="2" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
 
-                    <TextBlock Name="About_the_Book_Title" Height="30" Width="160" Text="About the book:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="3"/>
+                    <TextBlock Name="About_the_Book_Title" Height="30" Width="160" Text="Summary:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="3"/>
                     <TextBox Name="AboutTheBook" Grid.Row="3" Margin="212,12,18,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20"/>
 
                     <TextBlock Name="Price_Title" Height="30" Width="160" Text="Price:"  VerticalAlignment="Center"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="34,0,0,0" Grid.Row="4"/>
@@ -129,17 +129,17 @@
                                             <Label Content="price:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding price}" Margin="0,0"></TextBlock>
                                         </StackPanel>
-                                        <TextBlock Text="{Binding sellingCount}" Margin="55,0,0,0"></TextBlock>
+                                        <!--<TextBlock Text="{Binding sellingCount}" Margin="55,0,0,0"></TextBlock>-->
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="Numbers sold:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding sellingCount}" Margin="0,0"></TextBlock>
                                         </StackPanel>
-                                        <TextBlock Text="{Binding sellingOutcome}" Margin="55,0,0,0"></TextBlock>
+                                        <!--<TextBlock Text="{Binding sellingOutcome}" Margin="55,0,0,0"></TextBlock>-->
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="Selling Outcome:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding sellingOutcome}" Margin="0,0"></TextBlock>
                                         </StackPanel>
-                                        <TextBlock Text="{Binding rate}" Margin="55,0,0,0"></TextBlock>
+                                        <!--<TextBlock Text="{Binding rate}" Margin="55,0,0,0"></TextBlock>-->
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="Rate:" FontSize="10" Margin="50,0,0,0"></Label>
                                             <TextBlock Text="{Binding rate}" Margin="0,0"></TextBlock>
@@ -150,12 +150,14 @@
                                                     <ImageBrush ImageSource="/EditIcon.png" Stretch="Fill"/>
                                                 </Button.Background>
                                             </Button>
-                                            <Button x:Name="Delete_Book"  Margin="20,0,0,0" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="105" Click="Delete_Book_Click">
+                                            <Button x:Name="Add_Discount" Content="Add Discount" Margin="20,0,0,0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Center" Width="100" Background="#FFFFC857" FontSize="12" Foreground="#FF2C1E13" Click="Add_Discount_Click"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Button x:Name="Delete_Book"  Margin="5,0,0,0" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center" Width="70" Click="Delete_Book_Click" BorderBrush="#00FFFFFF">
                                                 <Button.Background>
-                                                    <ImageBrush ImageSource="/DeleteIcon.png" Stretch="Fill"/>
+                                                    <ImageBrush ImageSource="/DeleteIcon.png"/>
                                                 </Button.Background>
                                             </Button>
-                                            <Button x:Name="Add_Discount" Content="Add Discount" Margin="20,0,0,0" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="105" Background="#FFFFC857" Foreground="#FF2C1E13" Click="Add_Discount_Click"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
