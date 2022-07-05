@@ -50,7 +50,7 @@ namespace WpfApp1
 
         private void Delete_Book_Click(object sender, RoutedEventArgs e)
         {
-            
+            Collections.books.Remove((Book)(sender as FrameworkElement).DataContext);
         }
 
         private void book_cover_Click(object sender, RoutedEventArgs e)
@@ -63,7 +63,10 @@ namespace WpfApp1
 
         private void Add_Discount_Click(object sender, RoutedEventArgs e)
         {
-            
+            addDiscount a = new addDiscount((Book)(sender as FrameworkElement).DataContext);
+            a.Show();
+
+
         }
 
         private void Manager_Search_button_Click(object sender, RoutedEventArgs e)
@@ -120,7 +123,7 @@ namespace WpfApp1
                 //DataContext = Collections.currentUser.cart;
                 //Collections.currentUser.CartTotalPrice = Methods.calculateTotalPriceOfCart(Collections.currentUser);
                 //priceBox.Text = Methods.calculateTotalPriceOfCart(Collections.currentUser).ToString();
-                DataContext = Collections.currentUser.books;
+                DataContext = Collections.books;
             }
             else if (List_Of_Users.IsSelected)
             {
@@ -129,14 +132,16 @@ namespace WpfApp1
             else if (Edit_Profile.IsSelected)
             {
                 DataContext = Collections.currentManager;
+                name.Text = Collections.currentManager.name;
             }
             else if (VIP_Setting.IsSelected)
             {
-                //
+                VIPPrice.Text = Collections.vip.PricePerMonth.ToString();
             }
             if (Cash.IsSelected)
             {
                 DataContext = Collections.currentManager;
+                TotalCash.Text = Collections.currentManager.TotalCash.ToString();
             }
         }
 
@@ -222,7 +227,8 @@ namespace WpfApp1
 
         private void Change_VIP_Price_btn_Click(object sender, RoutedEventArgs e)
         {
-            //Set VIP Price
+            bool isValid = false;
+
             int[] ASCIIVIPPrice = new int[VIPPrice.Text.Length];
             for (int i = 0; i < ASCIIVIPPrice.Length; i++)
             {
@@ -239,6 +245,11 @@ namespace WpfApp1
                     MessageBox.Show("Price must be a number!");
                     break;
                 }
+                isValid = true;
+            }
+            if (isValid)
+            {
+                Collections.vip.PricePerMonth = float.Parse(VIPPrice.Text);
             }
 
         }
@@ -352,6 +363,12 @@ namespace WpfApp1
                     MessageBox.Show("There is a problem! Book was not added!");
                 }
             }
+        }
+
+        private void user_profile_Click(object sender, RoutedEventArgs e)
+        {
+            userInfo u = new userInfo((User)(sender as FrameworkElement).DataContext);
+            u.Show();
         }
     }
 }

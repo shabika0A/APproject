@@ -79,11 +79,22 @@ namespace WpfApp1
             }
             if (signedIn)
             {
-                
+                if (!isManagerBool)
+                {
                 user_dashboard u = new user_dashboard();
                 u.Show();
                 this.Close();
-                ///also open for manager
+                    Collections.userSignedIn = true;
+                }
+                else
+                {
+                    Manager_Dashboard m = new Manager_Dashboard();
+                    m.Show();
+                    this.Close();
+                    Collections.managerSignedIn = true;
+                }
+                
+                
             }
         }
     }

@@ -43,6 +43,7 @@ namespace WpfApp1
                 sText += PdfTextExtractor.GetTextFromPage(pdf_Reader, i);
             }
             lblPDF_Output.Text = sText;
+            HereBook = ThisBook;
         }
 
         private void back_Click(object sender, RoutedEventArgs e)

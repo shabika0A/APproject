@@ -12,8 +12,8 @@
     <Grid>
         <ScrollViewer x:Name="ScrollV" Height="270" Margin="40,12,40,0" VerticalAlignment="Top">
             <TextBlock x:Name="lblPDF_Output" Text=""
-                      TextWrapping="Wrap" Height="570" Width="720"/>
+                      TextWrapping="Wrap" Height="284" Width="720"/>
         </ScrollViewer> 
-        <Button x:Name="back" Content="Back" Margin="580,368,31,34" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="back_Click"/>
+        <Button x:Name="back" Content="Back" Margin="630,323,55,79" Background="#FF9CACF1" FontSize="22" FontFamily="Bahnschrift Light" FontWeight="Normal" Foreground="#ff00192e" Click="back_Click"/>
     </Grid>
 </Window>

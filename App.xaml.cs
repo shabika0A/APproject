@@ -15,7 +15,7 @@ namespace WpfApp1
     ///data must be taken from sql server
     public partial class App : Application
     {
-        
+
     }
     public class Book
     {
@@ -27,18 +27,21 @@ namespace WpfApp1
         public float discount { set; get; }
         public int discountDuration { set; get; }
         //book cover picture
-        public DateTime discountDeadline { set; get; }
-        //book cover picture
+        public string PDFName { get; set; }
         public string PDFAddress { get; set; }
+        public string CoverPictureName { get; set; }
+        public string CoverPictureType { get; set; }
         public string CoverAddress { get; set; }
-        public float? rate { set; get; }
-        public int? rateCount { set; get; }
+        public float rate { set; get; }
+        public int rateCount { set; get; }
         public int sellingCount { set; get; }
         public float sellingOutcome { set; get; }
+        public bool IsVIP { get; set; }
+        public DateTime discountDeadline { get; set; }
 
         //pdf file
         //preview pdf file
-        public Book(string n, string a, float p, string pub, string s, string CoverPictureType, string PDFName)
+        public Book(string n, string a, float p, string pub, string s, string CoverPictureName, string CoverPictureType, string PDFName, bool IsVIP = false)
         {
             name = n;
             author = a;
@@ -51,10 +54,13 @@ namespace WpfApp1
             rateCount = 0;
             sellingCount = 0;
             sellingOutcome = 0;
-            this.CoverAddress = "\\" + name + "." + CoverPictureType;  //CoverAddress;
-            string filename = PDFName + ".PDF";
+            this.CoverPictureName = CoverPictureName;
+            this.CoverPictureType = CoverPictureType;
+            this.CoverAddress = "\\" + this.CoverPictureName + "." + this.CoverPictureType;  //CoverAddress;
+            this.PDFName = PDFName;
+            string filename = this.PDFName + ".PDF";
             this.PDFAddress = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 24) + filename;
-
+            this.IsVIP = IsVIP;
         }
     }
     public class User
@@ -66,14 +72,14 @@ namespace WpfApp1
         string password { set; get; }
         public float Wallet { set; get; }
         public float CartTotalPrice { set; get; }
-        public  ObservableCollection<Book> books;
-        public  ObservableCollection <Book> favorites;
-        public  ObservableCollection<Book> cart;
-        public static  ObservableCollection<string> emailsList = new  ObservableCollection<string>();
+        public ObservableCollection<Book> books;
+        public ObservableCollection<Book> favorites;
+        public ObservableCollection<Book> cart;
+        public static ObservableCollection<string> emailsList = new ObservableCollection<string>();
         ///vip and start and end time and books
         public bool isVIP { set; get; }
         int VIPdays { set; get; }
-        public User(string n, string ln, string pn,string e,string p)
+        public User(string n, string ln, string pn, string e, string p)
         {
             name = n;
             lastName = ln;
@@ -82,9 +88,9 @@ namespace WpfApp1
             emailsList.Add(e);
             password = p;
             Wallet = 0;
-            books = new  ObservableCollection<Book>();
-            favorites = new  ObservableCollection<Book>();
-            cart = new  ObservableCollection<Book>();
+            books = new ObservableCollection<Book>();
+            favorites = new ObservableCollection<Book>();
+            cart = new ObservableCollection<Book>();
             isVIP = false;
             VIPdays = 0;
         }
@@ -98,7 +104,7 @@ namespace WpfApp1
         }
         public void changeName(string n)
         {
-            
+
             name = n;
         }
         public void changeLastName(string n)
@@ -117,21 +123,22 @@ namespace WpfApp1
     }
     public class Manager
     {
-        string name;
-        string lastName;
-        string phoneNumber;
-        public string email;
-        public static  ObservableCollection<string> emailsList = new  ObservableCollection<string>();
-        string password;
-        float TotalCash;
+        public string name { set; get; }
+        public string lastName { set; get; }
+        public string phoneNumber { set; get; }
+        public string email { set; get; }
+        string password { set; get; }
+        public static ObservableCollection<string> emailsList = new ObservableCollection<string>();
+        public float TotalCash { get; set; }
         public Manager(string n, string ln, string pn, string e, string p)
         {
             name = n;
             lastName = ln;
             phoneNumber = pn;
-            email = e;            
+            email = e;
             password = p;
             TotalCash = 0;
+            emailsList.Add(e);
         }
         public bool checkPassword(string p)
         {
@@ -163,16 +170,18 @@ namespace WpfApp1
         public float PricePerMonth { get; set; }
         ObservableCollection<Book> books;
     }
-    
+
     public class Collections
     {
         public static ObservableCollection<User> users = new ObservableCollection<User>();
         public static ObservableCollection<Manager> managers = new ObservableCollection<Manager>();
         public static ObservableCollection<Book> books = new ObservableCollection<Book>();
         public static VIP vip = new VIP();
+        public static bool userSignedIn = false;
+        public static bool managerSignedIn = false;
         public static int findBookIndexByName(string n)
         {
-            for(int i = 0; i < books.Count; i++)
+            for (int i = 0; i < books.Count; i++)
             {
                 if (books[i].name == n)
                 {
@@ -185,7 +194,7 @@ namespace WpfApp1
         public static Manager currentManager;
 
     }
-    
+
     public class Methods
     {
         public static float calculateTotalPriceOfCart(User u)
@@ -214,8 +223,8 @@ namespace WpfApp1
             }
             return false;
         }
-        
+
     }
-    
+
 
 }

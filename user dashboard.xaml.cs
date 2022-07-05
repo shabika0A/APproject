@@ -85,7 +85,19 @@ namespace WpfApp1
             }
             else if (my_books.IsSelected)
             {
-                DataContext = Collections.currentUser.books;
+                //DataContext = Collections.currentUser.books;
+                ObservableCollection<Book> allBooks = Collections.currentUser.books;
+                if (Collections.currentUser.isVIP)
+                {
+                    foreach (Book b in Collections.books)
+                    {
+                        if (b.IsVIP)
+                        {
+                            allBooks.Add(b);
+                        }
+                    }
+                }
+                DataContext = allBooks;
             }
             else if (cart.IsSelected)
             {

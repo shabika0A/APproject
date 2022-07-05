@@ -9,6 +9,8 @@
   <ItemGroup>
     <None Remove="addTowishList.jpg" />
     <None Remove="back.jpg" />
+    <None Remove="DeleteIcon.png" />
+    <None Remove="EditIcon.png" />
     <None Remove="exit.jpg" />
     <None Remove="GreatExpectations.jpg" />
     <None Remove="LesMiserables.jpg" />
@@ -28,6 +30,8 @@
   <ItemGroup>
     <Resource Include="addTowishList.jpg" />
     <Resource Include="back.jpg" />
+    <Resource Include="DeleteIcon.png" />
+    <Resource Include="EditIcon.png" />
     <Resource Include="exit.jpg" />
     <Content Include="GreatExpectations.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

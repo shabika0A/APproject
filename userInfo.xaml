@@ -1,0 +1,53 @@
+﻿<Window x:Name="userInfo1" x:Class="WpfApp1.userInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="" Height="584" Width="1066">
+    <Window.Background>
+        <ImageBrush ImageSource="/back.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Border BorderThickness="1" HorizontalAlignment="Left" Height="503" Margin="0,7,0,0" VerticalAlignment="Top" Width="225" Background="#FF00192E"/>
+        <Image Source="/profile.png" Margin="-4,10,928,424" Stretch="Uniform">
+
+            <Image.Clip>
+                <EllipseGeometry Center="55.5,55.5" RadiusX="40" RadiusY="40" />
+            </Image.Clip>
+        </Image>
+        <TextBlock x:Name="showName" Text="{Binding name}" HorizontalAlignment="Left" Height="20" Margin="8,125,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="#FF97E2DB" />
+        <TextBlock x:Name="showLastName" Text="{Binding lastName}" HorizontalAlignment="Left" Height="20" Margin="8,150,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="#FF97E2DB" />
+        <TextBlock x:Name="showEmail" Text="{Binding lastName}" HorizontalAlignment="Left" Height="20" Margin="10,181,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="#FF97E2DB" />
+        <TextBlock x:Name="showPhoneNumber" Text="{Binding lastName}" HorizontalAlignment="Left" Height="20" Margin="10,218,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="#FF97E2DB" />
+        <TextBlock x:Name="showVIP" Text="{Binding lastName}" HorizontalAlignment="Left" Height="20" Margin="10,263,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="#FF97E2DB" />
+
+        <ScrollViewer x:Name="book_viewer"  Margin="230,0,30,10" >
+            <ItemsControl ItemsSource="{Binding}" Width="984" Height="479" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Button x:Name="book_cover"  Margin="20,0" Background="#00FFFFFF" BorderBrush="#00FFFFFF" Height="175" Width="160"  >
+                                <Image x:Name="BookCover1" Source="{Binding CoverAddress}"  Stretch="Fill"></Image>
+                            </Button>
+                            <TextBlock x:Name="t1" Text="{Binding name}" Margin="50,0" FontStyle="Normal" Foreground="#FF00192E"  FontWeight="Bold" FontFamily="Cambria"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="author:" FontSize="10" Margin="50,0,0,0"></Label>
+                                <TextBlock Text="{Binding author}" Margin="0,0"></TextBlock>
+                            </StackPanel>
+                            <TextBlock Text="{Binding publisher}" Margin="55,0,0,0"></TextBlock>
+                            
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+    </Grid>
+</Window>
