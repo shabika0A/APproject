@@ -28,6 +28,7 @@ namespace WpfApp1
         public MainWindow()
         {
 
+<<<<<<< HEAD
             Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "jpg", "Little+Prince sample"));
             Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "jpg", "Great Expectations sample"));
             Collections.users.Add(new User("shakiba", "anaraki", "09123456789", "a@b.com", "something"));
@@ -36,6 +37,18 @@ namespace WpfApp1
             InitializeComponent();
             //user_dashboard u = new user_dashboard();
            // u.Show();
+=======
+            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "TheLittlePrince", "jpg", "Little+Prince sample"));
+            Collections.books.Add(new Book("Great Expectations", "me", 10, "ofogh", "two diary", "GreatExpectations", "jpg", "Great Expectations sample"));
+            Collections.currentUser = new User("shakiba", "anaraki", "09123456789", "a@b.com", "something");
+            Collections.currentUser.isVIP = true;
+            Collections.currentUser.books.Add(Collections.books[0]);
+            InitializeComponent();
+            user_dashboard u = new user_dashboard();
+            u.Show();
+            Manager_Dashboard M = new Manager_Dashboard();
+            M.Show();
+>>>>>>> 75d03972fa876b101203ee8fa567518a159b77fc
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)

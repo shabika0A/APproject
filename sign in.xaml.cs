@@ -79,11 +79,26 @@ namespace WpfApp1
             }
             if (signedIn)
             {
+<<<<<<< HEAD
                 
                 user_dashboard u = new user_dashboard();
                 u.Show();
                 this.Close();
                 ///also open for manager
+=======
+                ///close and show next window
+                if (isManagerBool)
+                {
+                    Manager_Dashboard MD = new Manager_Dashboard();
+                    MD.Show();
+                }
+                else
+                {
+                    user_dashboard UD = new user_dashboard();
+                    UD.Show();
+                }
+                this.Close();
+>>>>>>> 75d03972fa876b101203ee8fa567518a159b77fc
             }
         }
     }
