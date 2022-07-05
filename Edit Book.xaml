@@ -65,7 +65,7 @@
             <TextBox Name="BookPDF" Text="{Binding PDFName}" Margin="34,37,168,8" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Grid.Row="2" Grid.Column="1" />
             <TextBlock Name="Upload_Book_PDF_Title_Dot" Height="27" Width="100" Text=".PDF"  VerticalAlignment="Top"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="20" FontWeight="Bold" FontFamily="Cambria" Margin="159,30,0,0" Grid.Row="2" Grid.Column="1"/>
 
-            <ToggleButton x:Name="IsVIP"  Opacity="0.69"  Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="120,31,0,0" Checked="IsVIP_Checked" Height="19"/>
+            <ToggleButton x:Name="IsVIP"  Opacity="0.69"  Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="120,31,0,0" Height="19"/>
             <TextBlock Name="ToggleMassage" Height="41" Width="45"  Text="VIP"  FontStyle="Normal"  Foreground="#FF00192E" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" Grid.Row="4" Grid.Column="1" Margin="159,15,0,0"/>
         </Grid>
     </Grid>

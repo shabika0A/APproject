@@ -96,7 +96,7 @@
                     <TextBox Name="BookPDF" Margin="34,30,168,15" Background="#FFFFFF" BorderBrush="#FFFFFF" FontSize="20" Grid.Row="2" Grid.Column="1" />
                     <TextBlock Name="Upload_Book_PDF_Title_Dot" Height="40" Width="100" Text=".PDF"  VerticalAlignment="Top"  FontStyle="Normal"  HorizontalAlignment="Left" Foreground="#FF00192E" FontSize="30" FontWeight="Bold" FontFamily="Cambria" Margin="263,22,0,0" Grid.Row="2" Grid.Column="1"/>
 
-                    <ToggleButton x:Name="IsVIP"  Opacity="0.69"  Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="81,91,0,0" Checked="IsVIP_Checked"/>
+                    <ToggleButton x:Name="IsVIP"  Opacity="0.69"  Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="81,91,0,0" />
                     <TextBlock Name="ToggleMassage" Height="40" Width="45"  Text="VIP"  FontStyle="Normal"  Foreground="#FF00192E" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" Grid.Row="3" Grid.Column="1" Margin="120,76,0,0"/>
                 </Grid>
             </TabItem>
@@ -185,7 +185,7 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <Button x:Name="user_profile"  Margin="20,0" Background="#00FFFFFF" BorderBrush="#00FFFFFF" Height="175" Width="160" Click="user_profile_Click" >
+                                        <Button x:Name="user_profile"  Margin="20,0" Background="#00FFFFFF" BorderBrush="#00FFFFFF" Height="175" Width="160">
                                             <Image x:Name="UserProfile1" Source="/profile.png"  Stretch="Fill"></Image>
                                         </Button>
                                         <TextBlock x:Name="UserName" Text="{Binding name}" Margin="50,0" FontStyle="Normal" Foreground="#FF00192E"  FontWeight="Bold" FontFamily="Cambria"></TextBlock>

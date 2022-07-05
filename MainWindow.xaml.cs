@@ -36,6 +36,8 @@ namespace WpfApp1
             InitializeComponent();
             user_dashboard u = new user_dashboard();
             u.Show();
+            Manager_Dashboard M = new Manager_Dashboard();
+            M.Show();
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
