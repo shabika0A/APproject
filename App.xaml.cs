@@ -185,11 +185,7 @@ namespace WpfApp1
         public static Manager currentManager;
 
     }
-    //public class Current
-    //{
-        
-    //    //public Collections collections;
-    //}
+    
     public class Methods
     {
         public static float calculateTotalPriceOfCart(User u)

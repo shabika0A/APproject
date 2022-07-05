@@ -30,12 +30,12 @@ namespace WpfApp1
 
             Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "jpg", "Little+Prince sample"));
             Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "jpg", "Great Expectations sample"));
-            Collections.currentUser = new User("shakiba", "anaraki", "09123456789", "a@b.com", "something");
-            Collections.currentUser.isVIP = true;
-            Collections.currentUser.books.Add(Collections.books[0]);
+            Collections.users.Add(new User("shakiba", "anaraki", "09123456789", "a@b.com", "something"));
+            //Collections.currentUser.isVIP = true;
+            Collections.users[0].books.Add(Collections.books[0]);
             InitializeComponent();
-            user_dashboard u = new user_dashboard();
-            u.Show();
+            //user_dashboard u = new user_dashboard();
+           // u.Show();
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
