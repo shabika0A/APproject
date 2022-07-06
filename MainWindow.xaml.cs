@@ -99,6 +99,7 @@ namespace WpfApp1
             }
 
             c.Close();
+            //
 
             foreach (User u in Collections.users)
             {
