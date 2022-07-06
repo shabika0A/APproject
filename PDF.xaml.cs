@@ -57,7 +57,7 @@ namespace WpfApp1
                 //lblPDF_Output.Height = pdf_Reader.NumberOfPages * 100;
                 //var LineCount = File.ReadLines(ThisBook.PDFAddress).Count();
                 int LineCount = File.ReadAllLines(ThisBook.PDFAddress).Length;
-                lblPDF_Output.Height = LineCount * 0.3;
+                lblPDF_Output.Height = LineCount * 5;
                 for (int i = 1; i <= pdf_Reader.NumberOfPages; i++)
                 {
                     sText += PdfTextExtractor.GetTextFromPage(pdf_Reader, i);
@@ -73,7 +73,7 @@ namespace WpfApp1
                 //lblPDF_Output.Height = pdf_Reader.NumberOfPages * 100;
                 //var LineCount = File.ReadLines(ThisBook.PDFAddress).Count();
                 int LineCount = File.ReadAllLines(ThisBook.PDFAddress).Length;
-                lblPDF_Output.Height = LineCount * 0.6;
+                lblPDF_Output.Height = LineCount * 8.5;
                 for (int i = 1; i <= pdf_Reader.NumberOfPages; i++)
                 {
                     sText += PdfTextExtractor.GetTextFromPage(pdf_Reader, i);
