@@ -93,6 +93,7 @@ namespace WpfApp1
             favorites = new ObservableCollection<Book>();
             cart = new ObservableCollection<Book>();
             isVIP = false;
+            CartTotalPrice = 0;
         }
         public bool checkPassword(string p)
         {
