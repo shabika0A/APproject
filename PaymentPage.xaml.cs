@@ -19,7 +19,8 @@ namespace WpfApp1
     {
         User ThisUser;
         float ThisPrice = 0;
-        public PaymentPage(User U, float price)
+        string command;
+        public PaymentPage(User U, float price,string c)
         {
             //Price can be cart price or VIP price; This page is used for both payments
             //DataContext = price;////must be changed! after having banking account
@@ -27,6 +28,7 @@ namespace WpfApp1
             InitializeComponent();
             priceBox.Text = price.ToString();
             this.ThisPrice = price;
+            command = c;
         }
 
         
@@ -267,9 +269,19 @@ namespace WpfApp1
             {
                 //Check card info -> if OK...
                 MessageBox.Show("Paid Successfully!");
-                Methods.AddBooksToUserFromCart(ThisUser);
-                Collections.TotalCash += ThisPrice;
-                //add books to user's books list
+                switch (command){
+                    case "cart":
+                        Methods.AddBooksToUserFromCart(ThisUser);
+                        Collections.TotalCash += ThisPrice;
+                        Methods.calculateTotalPriceOfCart(ThisUser);
+
+                        break;
+                    case "vip":
+                        ThisUser.VIPendDate = DateTime.Now.AddDays(30);
+
+                        break;
+                }
+                
                 this.Close();
             }
 

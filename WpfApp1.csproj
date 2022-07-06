@@ -14,6 +14,7 @@
     <None Remove="exit.jpg" />
     <None Remove="GreatExpectations.jpg" />
     <None Remove="LesMiserables.jpg" />
+    <None Remove="nicholas.jpg" />
     <None Remove="profile.png" />
     <None Remove="SearchIcon - Copy.png" />
     <None Remove="SearchIcon.png" />
@@ -37,6 +38,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="LesMiserables.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="nicholas.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="profile.png">

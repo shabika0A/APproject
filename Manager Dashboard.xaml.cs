@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace WpfApp1
 {
@@ -492,6 +493,13 @@ namespace WpfApp1
             {
                 try
                 {
+                    
+                        string path = "\\"+BookPDF.Text+".pdf";
+                    string photoPath = "\\"+BookCover.Text + "."+BookCoverFileType.Text;
+                    if (!File.Exists(path)||!File.Exists(photoPath))
+                    {
+                        throw new Exception();
+                    }
                     Book NewBook = new Book(NameOfTheBook.Text, AuthorOfTheBook.Text, float.Parse(Price.Text), Publication.Text, AboutTheBook.Text, BookCover.Text, BookCoverFileType.Text, BookPDF.Text, (bool)IsVIP.IsChecked);
                     Collections.books.Add(NewBook);
                 }

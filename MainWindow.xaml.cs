@@ -36,10 +36,19 @@ namespace WpfApp1
             Collections.currentManager = Collections.managers[0];
             Collections.managerSignedIn = true;
             Collections.users[0].books.Add(Collections.books[0]);
-            Collections.users[0].isVIP=true;
-            InitializeComponent();
+           Collections.users[0].Wallet=100;
+            
             Manager_Dashboard m = new Manager_Dashboard();
             m.Show();
+            //these are needed please do not remove
+            foreach(User u in Collections.users)
+            {
+                if (u.isVIP && DateTime.Compare(DateTime.Now, u.VIPendDate) > 0)
+                {
+                    u.isVIP = false;
+                }
+            }
+            InitializeComponent();
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)

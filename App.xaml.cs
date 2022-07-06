@@ -79,7 +79,7 @@ namespace WpfApp1
         public static ObservableCollection<string> emailsList = new ObservableCollection<string>();
         ///vip and start and end time and books
         public bool isVIP { set; get; }
-        int VIPdays { set; get; }
+        public DateTime VIPendDate { set; get; }
         public User(string n, string ln, string pn, string e, string p)
         {
             name = n;
@@ -93,7 +93,6 @@ namespace WpfApp1
             favorites = new ObservableCollection<Book>();
             cart = new ObservableCollection<Book>();
             isVIP = false;
-            VIPdays = 0;
         }
         public bool checkPassword(string p)
         {
@@ -170,7 +169,7 @@ namespace WpfApp1
     public class VIP
     {
         public float PricePerMonth { get; set; }
-        ObservableCollection<Book> books;
+        //ObservableCollection<Book> books;
     }
 
     public class Collections
@@ -216,6 +215,7 @@ namespace WpfApp1
                     FinalPrice += b.price;
                 }
             }
+            u.CartTotalPrice = FinalPrice;
             return FinalPrice;
         }
 
@@ -248,6 +248,7 @@ namespace WpfApp1
                 b.sellingOutcome += BookPrice;
                 //u.cart.Remove(b);
             }
+            u.cart.Clear();
             //Collections.currentUser.cart.Remove((Book)(sender as FrameworkElement).DataContext);
             //Collections.currentUser.CartTotalPrice = Methods.calculateTotalPriceOfCart(Collections.currentUser);
             //foreach (Book b in u.cart)

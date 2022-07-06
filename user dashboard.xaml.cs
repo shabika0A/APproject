@@ -115,7 +115,7 @@ namespace WpfApp1
             {
                 DataContext = Collections.currentUser.cart;
                 Collections.currentUser.CartTotalPrice = Methods.calculateTotalPriceOfCart(Collections.currentUser);
-                priceBox.Text= Methods.calculateTotalPriceOfCart(Collections.currentUser).ToString();
+                priceBox.Text= Collections.currentUser.CartTotalPrice.ToString();
             }
             else if (favorites.IsSelected)
             {
@@ -161,8 +161,9 @@ namespace WpfApp1
 
         private void pay_online_Click(object sender, RoutedEventArgs e)
         {
-            PaymentPage p = new PaymentPage(Collections.currentUser,Collections.currentUser.CartTotalPrice);
+            PaymentPage p = new PaymentPage(Collections.currentUser,Collections.currentUser.CartTotalPrice,"cart");
             p.Show();
+            priceBox.Text = Collections.currentUser.CartTotalPrice.ToString();
             //this.Close();
         }
 
@@ -174,7 +175,7 @@ namespace WpfApp1
 
         private void BuyVIP_Click(object sender, RoutedEventArgs e)
         {
-            PaymentPage P = new PaymentPage(Collections.currentUser, Collections.vip.PricePerMonth);
+            PaymentPage P = new PaymentPage(Collections.currentUser, Collections.vip.PricePerMonth,"vip");
             P.Show();
         }
 
@@ -245,8 +246,6 @@ namespace WpfApp1
             }
         }
 
-        
-
         private void save_password_Click_1(object sender, RoutedEventArgs e)
         {
             if (!Collections.currentUser.checkPassword(CPass.Text))
@@ -273,6 +272,9 @@ namespace WpfApp1
                 Collections.currentUser.Wallet -= Methods.calculateTotalPriceOfCart(Collections.currentUser);
                 Methods.AddBooksToUserFromCart(Collections.currentUser);
                 Collections.TotalCash += Methods.calculateTotalPriceOfCart(Collections.currentUser);
+                Collections.currentUser.cart.Clear();
+                Methods.calculateTotalPriceOfCart(Collections.currentUser);
+                priceBox.Text = Collections.currentUser.CartTotalPrice.ToString();
             }
             else
             {
