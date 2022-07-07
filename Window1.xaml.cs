@@ -67,19 +67,19 @@ namespace WpfApp1
             command += "delete from book;";
             foreach (Book u in Collections.books)
             {
-                string o = "";
+                string o = "-";
                 foreach (string e in bookowners[Collections.books.IndexOf(u)])
                 {
                     o = o + e + "*";
                 }
                 o = o.TrimEnd('*');
-                string f = "";
+                string f = "-";
                 foreach (string e in favs[Collections.books.IndexOf(u)])
                 {
                     f = f + e + "*";
                 }
                 f = f.TrimEnd('*');
-                string car = "";
+                string car = "-";
                 foreach (string e in carts[Collections.books.IndexOf(u)])
                 {
                     car = car + e + "*";
@@ -87,6 +87,8 @@ namespace WpfApp1
                 car = car.TrimEnd('*');
                 command += "insert into book values('" + Collections.findBookIndexByName(u.name) + "','" + u.name + "','" + u.author + "','" + u.price + "','" + u.publisher + "','" + u.summery + "','" + u.discount + "','" + u.discountDeadline.ToString() + "','" + u.PDFName + "','" + u.PDFAddress + "','" + u.CoverPictureName + "','" + u.CoverPictureType + "','" + u.CoverAddress + "','" + u.rate + "','" + u.rateCount + "','" + u.sellingCount + "','" + u.sellingOutcome + "','" + Convert.ToByte(u.IsVIP) + "','" + o + "','" + f + "','" + car + "');";
             }
+            command += "delete from vip";
+            command += "insert into vip values('" + Collections.vip.PricePerMonth + "')";
             SqlCommand scom = new SqlCommand(command, c);
             scom.BeginExecuteNonQuery();
             c.Close();
