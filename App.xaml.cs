@@ -70,7 +70,7 @@ namespace WpfApp1
         public string lastName { set; get; }
         public string phoneNumber { set; get; }
         public string email { set; get; }
-        string password { set; get; }
+        public string password { set; get; }
         public float Wallet { set; get; }
         public float CartTotalPrice { set; get; }
         public ObservableCollection<Book> books;
@@ -86,7 +86,6 @@ namespace WpfApp1
             lastName = ln;
             phoneNumber = pn;
             email = e;
-            emailsList.Add(e);
             password = p;
             Wallet = 0;
             books = new ObservableCollection<Book>();
@@ -94,6 +93,7 @@ namespace WpfApp1
             cart = new ObservableCollection<Book>();
             isVIP = false;
             CartTotalPrice = 0;
+            emailsList.Add(e);
         }
         public bool checkPassword(string p)
         {
@@ -105,7 +105,6 @@ namespace WpfApp1
         }
         public void changeName(string n)
         {
-
             name = n;
         }
         public void changeLastName(string n)
@@ -128,7 +127,7 @@ namespace WpfApp1
         public string lastName { set; get; }
         public string phoneNumber { set; get; }
         public string email { set; get; }
-        string password { set; get; }
+        public string password { set; get; }
         public static ObservableCollection<string> emailsList = new ObservableCollection<string>();
 
         //public float TotalCash { get; set; }
@@ -170,7 +169,10 @@ namespace WpfApp1
     public class VIP
     {
         public float PricePerMonth { get; set; }
-        //ObservableCollection<Book> books;
+        public VIP()
+        {
+            PricePerMonth = 100;
+        }
     }
 
     public class Collections
@@ -191,6 +193,10 @@ namespace WpfApp1
                 }
             }
             return -1;
+        }
+        public static User findUserByEmail(string n)
+        {
+            return users[User.emailsList.IndexOf(n)];
         }
         public static User currentUser;
         public static Manager currentManager;

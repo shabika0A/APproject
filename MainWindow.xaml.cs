@@ -34,15 +34,15 @@ namespace WpfApp1
         public MainWindow()
         {
 
-            Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "TheLittlePrince", "jpg", "Tom Sawyer"));
-            Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "GreatExpectations", "jpg", "Tom Sawyer"));
-            Collections.users.Add(new User("shakiba", "anaraki", "09123456789", "a@b.com", "something"));
-            Collections.managers.Add(new Manager("shakiba", "anaraki", "09123456789", "s@a.com", "something"));
+            //Collections.books.Add(new Book("TheLittlePrince", "me", 10, "ofogh", "one diary", "TheLittlePrince", "jpg", "Tom Sawyer"));
+            //Collections.books.Add(new Book("GreatExpectations", "me", 10, "ofogh", "two diary", "GreatExpectations", "jpg", "Tom Sawyer"));
+            //Collections.users.Add(new User("shakiba", "anaraki", "09123456789", "a@b.com", "something"));
+            //Collections.managers.Add(new Manager("shakiba", "anaraki", "09123456789", "s@a.com", "something"));
             //Collections.currentUser.isVIP = true;
-            Collections.currentManager = Collections.managers[0];
-            Collections.managerSignedIn = true;
-            Collections.users[0].books.Add(Collections.books[0]);
-           Collections.users[0].Wallet=100;
+            //Collections.currentManager = Collections.managers[0];
+           // Collections.managerSignedIn = true;
+           // Collections.users[0].favorites.Add(Collections.books[0]);
+           //Collections.users[0].Wallet=100;
             
             //Manager_Dashboard m = new Manager_Dashboard();
             //m.Show();
@@ -90,14 +90,41 @@ namespace WpfApp1
                 
                 b.rate = float.Parse( bookdata.Rows[i][13].ToString());
                 b.rateCount = int.Parse(bookdata.Rows[i][14].ToString());
+                
                 b.sellingCount = int.Parse(bookdata.Rows[i][15].ToString());
-                b.sellingCount = int.Parse(bookdata.Rows[i][16].ToString());
-                b.sellingOutcome = float.Parse(bookdata.Rows[i][17].ToString()) ;
+                b.sellingOutcome = float.Parse(bookdata.Rows[i][16].ToString()) ;
                 b.CoverAddress = bookdata.Rows[i][12].ToString();         
                 b.PDFAddress= bookdata.Rows[i][9].ToString();
                 Collections.books.Add(b);
+                string[] owners= bookdata.Rows[i][18].ToString().Split("*");
+                if (owners.Length > 1)
+                
+                    foreach (string e in owners)
+                {
+                    Collections.users[int.Parse(e)].books.Add(b);
+                }
+                string[] favs = bookdata.Rows[i][19].ToString().Split("*");
+                if (favs.Length > 1) {
+                    foreach (string e in favs)
+                    {
+                        Collections.users[int.Parse(e)].favorites.Add(b);
+                    }
+                }
+                
+                string[] carts = bookdata.Rows[i][18].ToString().Split("*");
+                if (favs.Length > 1)
+                
+                    foreach (string e in carts)
+                {
+                    
+                        Collections.users[int.Parse(e)].cart.Add(b);
+                }
             }
-
+            command = "select * from vip";
+            DataTable vipData = new DataTable();
+            a = new SqlDataAdapter(command, c);
+            a.Fill(vipData);
+            Collections.vip.PricePerMonth = float.Parse(vipData.Rows[0][0].ToString());
             c.Close();
             //
 
@@ -116,8 +143,6 @@ namespace WpfApp1
             Window1 exit = new Window1();
             this.Close();
             exit.Show();
-            
-            
         }
 
         private void sign_in_Click(object sender, RoutedEventArgs e)
